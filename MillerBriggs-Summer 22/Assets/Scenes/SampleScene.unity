@@ -5432,6 +5432,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 6
   jumpKeyCode: 32
+  dashKeyCode: 304
   coyoteTime: 0.1
   jumpBufferLength: 0.2
   jumpBufferCount: 0
@@ -5441,7 +5442,12 @@ MonoBehaviour:
   footSteps: {fileID: 2100533810}
   impactEffect: {fileID: 250330202}
   minImpactTime: 1
-  fallTimeForImpact: 0
+  dashTime: 0.15
+  dashSpeed: 35
+  dashCooldown: 1.5
+  canMove: 1
+  isDashing: 0
+  isTouchingWall: 0
 --- !u!50 &979758546
 Rigidbody2D:
   serializedVersion: 4
@@ -5546,8 +5552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b865b6c9804d04bbc6488866eb5a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 1.5
+  fallMultiplier: 3.5
+  lowJumpMultiplier: 2
 --- !u!1 &1214321670
 GameObject:
   m_ObjectHideFlags: 0

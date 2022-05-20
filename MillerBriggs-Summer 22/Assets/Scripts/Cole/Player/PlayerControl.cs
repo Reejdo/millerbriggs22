@@ -17,8 +17,9 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed, jumpForce;
+    private int facingDirection; //facing left or right
 
-    public KeyCode jumpKeyCode;
+    public KeyCode jumpKeyCode, dashKeyCode;
 
     //time after player leaves platform, 0.2 seconds after you walk over the edge to jump
     public float coyoteTime = 0.1f;
@@ -34,11 +35,23 @@ public class PlayerControl : MonoBehaviour
     public ParticleSystem footSteps, impactEffect;
     //if we want to change emission
     private ParticleSystem.EmissionModule footEmission;
-    private bool wasOnGround; //lets us know that we were on the ground for impact effect
+    //lets us know that we were on the ground for impact effect
+    private bool wasOnGround; 
 
     //So the impact doesn't happen for small distances
     public float minImpactTime = 1f; 
-    public float fallTimeForImpact;
+    private float fallTimeForImpact;
+
+    [SerializeField]
+    private float dashTime, dashSpeed, dashCooldown;
+    private float dashTimeLeft; 
+    private float distanceBetweenImages;
+    private float lastImageXPos;
+    private float lastDashTime = -100;
+
+    public bool canMove = true; 
+    public bool isDashing = false;
+    public bool isTouchingWall = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -51,13 +64,21 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         isGrounded = CheckGrounded();
+        
         Jump();
-
+        PlayerFacingDirection();
+        DashInputCheck();
+        CheckDash(); 
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (canMove)
+        {
+            Move();
+        }
+
+
     }
 
     void Move()
@@ -105,6 +126,18 @@ public class PlayerControl : MonoBehaviour
         wasOnGround = isGrounded; 
     }
 
+    void PlayerFacingDirection()
+    {
+        if (Input.GetAxisRaw("Horizontal") > 0.1)
+        {
+            facingDirection = 1; 
+        }
+        else if (Input.GetAxisRaw("Horizontal") < -0.1)
+        {
+            facingDirection = -1; 
+        }
+    }
+
     void Jump()
     {
         //manage coyote time
@@ -141,6 +174,53 @@ public class PlayerControl : MonoBehaviour
             myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, myRigidBody2D.velocity.y * 0.5f);
         }
 
+    }
+
+    void DashInputCheck()
+    {
+        if (Input.GetKeyDown(dashKeyCode))
+        {
+            if (Time.time >= (lastDashTime + dashCooldown))
+            {
+                AttemptToDash(); 
+            }
+        }
+    }
+
+    void AttemptToDash()
+    {
+        isDashing = true;
+        dashTimeLeft = dashTime;
+        lastDashTime = Time.time; 
+
+        //PlayerAfterImagePool.Instance.GetFromPool(); 
+        //lastImageXPos = transform.position.x; 
+    }
+
+    void CheckDash()
+    {
+        if (isDashing)
+        {
+            if (dashTimeLeft > 0)
+            {
+                canMove = false;
+                myRigidBody2D.velocity = new Vector2(dashSpeed * facingDirection, 0f);
+                dashTimeLeft -= Time.deltaTime;
+            }
+            /*
+            if (Mathf.Abs(transform.position.x - lastImageXPos) > distanceBetweenImages)
+            {
+                PlayerAfterImagePool.Instance.GetFromPool();
+                lastImageXPos = transform.position.x; 
+            }
+            */ 
+        }
+        
+        if (dashTimeLeft <= 0 || isTouchingWall)
+        {
+            isDashing = false;
+            canMove = true; 
+        }
     }
 
     bool CheckGrounded()
