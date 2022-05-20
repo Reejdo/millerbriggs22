@@ -17,8 +17,8 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed, jumpForce;
-    [SerializeField]
-    private KeyCode jumpKeyCode;
+
+    public KeyCode jumpKeyCode;
 
     //time after player leaves platform, 0.2 seconds after you walk over the edge to jump
     public float coyoteTime = 0.1f;
@@ -127,17 +127,20 @@ public class PlayerControl : MonoBehaviour
             jumpBufferCount -= Time.deltaTime; 
         }
 
+
         //Make player jump
         if (jumpBufferCount >= 0 && hangCounter > 0)
         {
+            Debug.Log("Jump"); 
             myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
             jumpBufferCount = 0; 
         }
-
+        
         if (Input.GetKeyUp(jumpKeyCode) && myRigidBody2D.velocity.y > 0)
         {
-            myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, myRigidBody2D.velocity.y * 0.5f); 
+            myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, myRigidBody2D.velocity.y * 0.5f);
         }
+
     }
 
     bool CheckGrounded()
