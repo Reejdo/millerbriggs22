@@ -88,7 +88,6 @@ public class PlayerControl : MonoBehaviour
         Jump();
         PlayerFacingDirection();
         DashInputCheck();
-        CheckDash();
         MinusJumpCount(); 
     }
 
@@ -99,6 +98,7 @@ public class PlayerControl : MonoBehaviour
             Move();
         }
 
+        CheckDash();
     }
 
     void Move()
@@ -216,10 +216,11 @@ public class PlayerControl : MonoBehaviour
         isDashing = true;
         dashTimeLeft = dashTime;
         lastDashTime = Time.time;
-        SetDashDirection(); 
 
-        //PlayerAfterImagePool.Instance.GetFromPool(); 
-        //lastImageXPos = transform.position.x; 
+        dashEffect.gameObject.SetActive(true);
+        dashEffect.Play(); 
+
+        SetDashDirection(); 
     }
 
     void SetDashDirection()
@@ -268,27 +269,29 @@ public class PlayerControl : MonoBehaviour
 
     void CheckDash()
     {
+        //Checks dash every frame
+
         if (isDashing)
         {
+            canDash = false; 
+
             if (dashTimeLeft > 0)
             {
                 canJump = false;
                 canMove = false;
-                //myRigidBody2D.velocity = new Vector2(dashSpeed * dashDirX, dashSpeed * dashDirY);
                 Vector2 moveHorz = transform.right * dashDirX; 
                 Vector2 moveVert = transform.up * dashDirY; 
                 
                 myRigidBody2D.velocity = (moveHorz + moveVert).normalized * dashSpeed;
 
                 dashTimeLeft -= Time.deltaTime;
-                dashEffect.gameObject.SetActive(true);
                 dashEffect.transform.position = gameObject.transform.position;
             }
-        }
+        } 
 
         if ((dashTimeLeft <= 0 || isTouchingWall) && isDashing)
         {
-            dashEffect.gameObject.SetActive(false);
+            StartCoroutine(DashEffectFade());
             myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, 0f); 
             //dashEffect.Stop();
             isDashing = false;
@@ -302,48 +305,22 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-
-    /*
-    void CheckDash()
+    IEnumerator DashEffectFade()
     {
-        if (isDashing)
-        {
-            if (dashTimeLeft > 0)
-            {
-                canJump = false; 
-                canMove = false;
-                myRigidBody2D.velocity = new Vector2(dashSpeed * facingDirection, 0f);
-                dashTimeLeft -= Time.deltaTime;
-                dashEffect.gameObject.SetActive(true);
-                dashEffect.transform.position = gameObject.transform.position;
-                //dashEffect.Play();
+        dashEffect.Stop();
+        yield return new WaitForSeconds(0.25f);
+        dashEffect.gameObject.SetActive(false); 
 
-            }
-            /* if I want afterimage
-            if (Mathf.Abs(transform.position.x - lastImageXPos) > distanceBetweenImages)
-            {
-                PlayerAfterImagePool.Instance.GetFromPool();
-                lastImageXPos = transform.position.x; 
-            }
-            
-        }
-        
-        if (dashTimeLeft <= 0 || isTouchingWall)
-        {
-            dashEffect.gameObject.SetActive(false);
-            //dashEffect.Stop();
-            isDashing = false;
-            canMove = true;
-            canJump = true; 
-        }
     }
-    */ 
+
 
     bool CheckGrounded()
     {
         return Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround) || 
             Physics2D.OverlapCircle(groundCheckPoint2.position, groundCheckRadius, whatIsGround);
     }
+
+
 
     void MinusJumpCount()
     {

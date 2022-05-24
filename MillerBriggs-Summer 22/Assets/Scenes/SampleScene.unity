@@ -5250,7 +5250,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.824742
+  orthographic size: 13.0244465
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6675,13 +6675,22 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 1
-          value: 0
-          inSlope: 0
-          outSlope: 0
+          time: 0.5151825
+          value: 0.12707599
+          inSlope: -0.24540159
+          outSlope: -0.24540159
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0
+          inWeight: 0.33333334
+          outWeight: 0.54818517
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -0.013120895
+          outSlope: -0.013120895
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.7857143
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
