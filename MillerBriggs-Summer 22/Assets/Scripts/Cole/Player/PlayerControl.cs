@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D myRigidBody2D;
 
+    [Header("[Finding Ground]")]
     public float groundCheckRadius = 0.1f; 
     public Transform groundCheckPoint, groundCheckPoint2;
     public LayerMask whatIsGround;
@@ -15,13 +16,18 @@ public class PlayerControl : MonoBehaviour
     private Animator myAnim;
     public SpriteRenderer playerSpriteRender;
 
+    [Header("[Movement]")]
     [SerializeField]
-    private float moveSpeed, jumpForce;
+    private float moveSpeed;
     private int facingDirection; //facing left or right
 
-    public KeyCode jumpKeyCode, dashKeyCode;
 
+    [Header("[Jumping]")]
+    public KeyCode jumpKeyCode;
+    public float jumpForce;
     //time after player leaves platform, 0.2 seconds after you walk over the edge to jump
+    public float currentJumps = 2;
+    public float maximumJumps = 2; 
     public float coyoteTime = 0.1f;
     private float hangCounter;
 
@@ -29,10 +35,15 @@ public class PlayerControl : MonoBehaviour
     public float jumpBufferLength = 0.1f;
     public float jumpBufferCount;
 
+    [Header("[Camera]")]
     public Transform camTarget;
     public float camAheadAmount, camAheadSpeed;
 
-    public ParticleSystem footSteps, impactEffect;
+
+    [Header("[Particles]")]
+    public ParticleSystem footSteps;
+    public ParticleSystem impactEffect; 
+    public ParticleSystem dashEffect;
     //if we want to change emission
     private ParticleSystem.EmissionModule footEmission;
     //lets us know that we were on the ground for impact effect
@@ -42,20 +53,29 @@ public class PlayerControl : MonoBehaviour
     public float minImpactTime = 1f; 
     private float fallTimeForImpact;
 
+    [Header("[Dashing]")]
+    [SerializeField]
+    public KeyCode dashKeyCode;
     [SerializeField]
     private float dashTime, dashSpeed, dashCooldown;
+    private int dashDirX, dashDirY; 
     private float dashTimeLeft; 
     private float distanceBetweenImages;
     private float lastImageXPos;
     private float lastDashTime = -100;
 
-    public bool canMove = true; 
+
+    [Header("[Booleans]")]
+    public bool canMove = true;
+    public bool canJump = true;
+    public bool canDash = true; 
     public bool isDashing = false;
-    public bool isTouchingWall = false; 
+    public bool isTouchingWall = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        SetJumpCount(); 
         myRigidBody2D = GetComponent<Rigidbody2D>();
         footEmission = footSteps.emission; 
     }
@@ -64,11 +84,12 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         isGrounded = CheckGrounded();
-        
+
         Jump();
         PlayerFacingDirection();
         DashInputCheck();
-        CheckDash(); 
+        CheckDash();
+        MinusJumpCount(); 
     }
 
     private void FixedUpdate()
@@ -77,7 +98,6 @@ public class PlayerControl : MonoBehaviour
         {
             Move();
         }
-
 
     }
 
@@ -143,17 +163,20 @@ public class PlayerControl : MonoBehaviour
         //manage coyote time
         if (isGrounded)
         {
+            Debug.Log("Is Grounded");
+            SetJumpCount(); 
             hangCounter = coyoteTime;
         }
-        else
+        else if (maximumJumps == 1 && !isGrounded)
         {
             hangCounter -= Time.deltaTime; 
         }
 
         //manage jump buffer
-        if (Input.GetKeyDown(jumpKeyCode))
+        if (Input.GetKeyDown(jumpKeyCode) && currentJumps > 0)
         {
-            jumpBufferCount = jumpBufferLength; 
+            Debug.Log("Key Down");
+            jumpBufferCount = jumpBufferLength;
         }
         else
         {
@@ -162,7 +185,7 @@ public class PlayerControl : MonoBehaviour
 
 
         //Make player jump
-        if (jumpBufferCount >= 0 && hangCounter > 0)
+        if (jumpBufferCount >= 0 && hangCounter > 0 && canJump)
         {
             Debug.Log("Jump"); 
             myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
@@ -180,21 +203,67 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKeyDown(dashKeyCode))
         {
-            if (Time.time >= (lastDashTime + dashCooldown))
+            if (canDash)
             {
-                AttemptToDash(); 
+                AttemptToDash();
             }
         }
     }
 
     void AttemptToDash()
     {
+        canDash = false;    
         isDashing = true;
         dashTimeLeft = dashTime;
-        lastDashTime = Time.time; 
+        lastDashTime = Time.time;
+        SetDashDirection(); 
 
         //PlayerAfterImagePool.Instance.GetFromPool(); 
         //lastImageXPos = transform.position.x; 
+    }
+
+    void SetDashDirection()
+    {
+        //Determine what input the player is pressing
+        if (Input.GetAxisRaw("Horizontal") > 0.1)
+        {
+            dashDirX = 1;
+        }
+        else if (Input.GetAxisRaw("Horizontal") < -0.1)
+        {
+            dashDirX = -1;
+        }
+        else
+        {
+            dashDirX = 0;
+        }
+
+        if (Input.GetAxisRaw("Vertical") > 0.1)
+        {
+            dashDirY = 1;
+        }
+        else if (Input.GetAxisRaw("Vertical") < -0.1)
+        {
+            dashDirY = -1;
+        }
+        else
+        {
+            dashDirY = 0;
+        }
+
+        //If the player hasn't pressed an input
+        if (dashDirX == 0 && dashDirY == 0)
+        {
+            if (!isGrounded)
+            {
+                dashDirY = 1;
+            }
+            else
+            {
+                dashDirX = 1;
+            }
+        }
+
     }
 
     void CheckDash()
@@ -203,25 +272,72 @@ public class PlayerControl : MonoBehaviour
         {
             if (dashTimeLeft > 0)
             {
+                canJump = false;
+                canMove = false;
+                //myRigidBody2D.velocity = new Vector2(dashSpeed * dashDirX, dashSpeed * dashDirY);
+                Vector2 moveHorz = transform.right * dashDirX; 
+                Vector2 moveVert = transform.up * dashDirY; 
+                
+                myRigidBody2D.velocity = (moveHorz + moveVert).normalized * dashSpeed;
+
+                dashTimeLeft -= Time.deltaTime;
+                dashEffect.gameObject.SetActive(true);
+                dashEffect.transform.position = gameObject.transform.position;
+            }
+        }
+
+        if ((dashTimeLeft <= 0 || isTouchingWall) && isDashing)
+        {
+            dashEffect.gameObject.SetActive(false);
+            myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, 0f); 
+            //dashEffect.Stop();
+            isDashing = false;
+            canMove = true;
+            canJump = true;
+        }
+
+        if (isGrounded)
+        {
+            canDash = true; 
+        }
+    }
+
+
+    /*
+    void CheckDash()
+    {
+        if (isDashing)
+        {
+            if (dashTimeLeft > 0)
+            {
+                canJump = false; 
                 canMove = false;
                 myRigidBody2D.velocity = new Vector2(dashSpeed * facingDirection, 0f);
                 dashTimeLeft -= Time.deltaTime;
+                dashEffect.gameObject.SetActive(true);
+                dashEffect.transform.position = gameObject.transform.position;
+                //dashEffect.Play();
+
             }
-            /*
+            /* if I want afterimage
             if (Mathf.Abs(transform.position.x - lastImageXPos) > distanceBetweenImages)
             {
                 PlayerAfterImagePool.Instance.GetFromPool();
                 lastImageXPos = transform.position.x; 
             }
-            */ 
+            
         }
         
         if (dashTimeLeft <= 0 || isTouchingWall)
         {
+            dashEffect.gameObject.SetActive(false);
+            //dashEffect.Stop();
             isDashing = false;
-            canMove = true; 
+            canMove = true;
+            canJump = true; 
         }
     }
+    */ 
 
     bool CheckGrounded()
     {
@@ -229,6 +345,19 @@ public class PlayerControl : MonoBehaviour
             Physics2D.OverlapCircle(groundCheckPoint2.position, groundCheckRadius, whatIsGround);
     }
 
+    void MinusJumpCount()
+    {
+        if (Input.GetKeyUp(jumpKeyCode) && currentJumps > 0 && myRigidBody2D.velocity.y != 0 && canJump)
+        {
+            currentJumps -= 1;
+        }
+    }
+
+    void SetJumpCount()
+    {
+        Debug.Log("Set jump count");
+        currentJumps = maximumJumps; 
+    }
 
     private void OnDrawGizmosSelected()
     {
