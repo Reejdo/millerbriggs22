@@ -75,7 +75,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetJumpCount(); 
+        SetJumpCountMax(); 
         myRigidBody2D = GetComponent<Rigidbody2D>();
         footEmission = footSteps.emission; 
     }
@@ -88,7 +88,9 @@ public class PlayerControl : MonoBehaviour
         Jump();
         PlayerFacingDirection();
         DashInputCheck();
-        MinusJumpCount(); 
+        MinusJumpCount();
+
+        CheckDialogue(); 
     }
 
     private void FixedUpdate()
@@ -163,8 +165,7 @@ public class PlayerControl : MonoBehaviour
         //manage coyote time
         if (isGrounded)
         {
-            Debug.Log("Is Grounded");
-            SetJumpCount(); 
+            SetJumpCountMax(); 
             hangCounter = coyoteTime;
         }
         else if (maximumJumps == 1 && !isGrounded)
@@ -175,7 +176,6 @@ public class PlayerControl : MonoBehaviour
         //manage jump buffer
         if (Input.GetKeyDown(jumpKeyCode) && currentJumps > 0)
         {
-            Debug.Log("Key Down");
             jumpBufferCount = jumpBufferLength;
         }
         else
@@ -187,7 +187,6 @@ public class PlayerControl : MonoBehaviour
         //Make player jump
         if (jumpBufferCount >= 0 && hangCounter > 0 && canJump)
         {
-            Debug.Log("Jump"); 
             myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, jumpForce);
             jumpBufferCount = 0; 
         }
@@ -313,15 +312,14 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-
+    //returns value of player grounded state
     bool CheckGrounded()
     {
         return Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround) || 
             Physics2D.OverlapCircle(groundCheckPoint2.position, groundCheckRadius, whatIsGround);
     }
 
-
-
+    //subtract from the jump count
     void MinusJumpCount()
     {
         if (Input.GetKeyUp(jumpKeyCode) && currentJumps > 0 && myRigidBody2D.velocity.y != 0 && canJump)
@@ -330,10 +328,27 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void SetJumpCount()
+    //sets jump count to max
+    void SetJumpCountMax()
     {
-        Debug.Log("Set jump count");
         currentJumps = maximumJumps; 
+    }
+
+    //if dialogue is playing, player can't move
+    void CheckDialogue()
+    {
+        if (DialogueManager.instance.dialogueIsPlaying)
+        {
+            canMove = false;
+            canJump = false;
+            canDash = false;
+        }
+        else
+        {
+            canMove = true;
+            canJump = true;
+            canDash = true;
+        }
     }
 
     private void OnDrawGizmosSelected()

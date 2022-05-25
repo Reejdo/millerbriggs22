@@ -30,5 +30,6 @@ public class ImproveJump : MonoBehaviour
         {
             myRigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         } 
+
     }
 }
