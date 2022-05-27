@@ -5885,7 +5885,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1175.9106, w: -97.91693}
+  m_margin: {x: 0, y: 0, z: -925.42334, w: -97.91693}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -17007,6 +17007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146523447}
   - component: {fileID: 2146523448}
+  - component: {fileID: 2146523449}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -17042,10 +17043,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1339527071}
   dialogueText: {fileID: 753094362}
+  textBox: {fileID: 753094362}
   choices:
   - {fileID: 1683104068}
   - {fileID: 1666647885}
   - {fileID: 827878420}
+--- !u!114 &2146523449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146523446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3434a76ff88c9e34bac593a043170d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3353470902921610146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17101,5 +17115,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3353470903223784557, guid: b0e8b94c46a121547aca32777e904d87, type: 3}
+      propertyPath: inkJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: 3b9fb26f3e299b042b9b1671bafaad8c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0e8b94c46a121547aca32777e904d87, type: 3}

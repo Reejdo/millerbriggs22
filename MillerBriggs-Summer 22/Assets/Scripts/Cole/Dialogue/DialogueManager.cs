@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems; 
@@ -10,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TMP_Text textBox; 
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -21,7 +23,9 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory; //current ink file to display
 
     //only allow outside scripts to read the value, not to modify
-    public bool dialogueIsPlaying { get; private set; } 
+    public bool dialogueIsPlaying { get; private set; }
+
+    private DialogueVertexAnimator dialogueVertexAnimator;
 
     private void Awake()
     {
@@ -29,7 +33,9 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene"); 
         }
-        instance = this; 
+        instance = this;
+
+        dialogueVertexAnimator = new DialogueVertexAnimator(textBox);
     }
 
     /*
@@ -87,12 +93,21 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = ""; 
     }
 
+    private Coroutine typeRoutine = null;
     private void ContinueStory()
     {
         if (currentStory.canContinue)
         {
             //set text for current dialogue line
-            dialogueText.text = currentStory.Continue();
+            //dialogueText.text = currentStory.Continue();
+
+
+            this.EnsureCoroutineStopped(ref typeRoutine);
+            dialogueVertexAnimator.textAnimating = false;
+            List<DialogueCommand> commands = DialogueUtility.ProcessInputString(currentStory.Continue(), out string totalTextMessage);
+            typeRoutine = StartCoroutine(dialogueVertexAnimator.AnimateTextIn(commands, totalTextMessage, null));
+
+
 
             //display any choices for this dialogue
             DisplayChoices(); 
