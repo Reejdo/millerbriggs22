@@ -2,7 +2,7 @@ Hello there! #speaker:Dr. Green #portrait:Dr_Green #emotion:1 #layout:left
 -> main
 
 === main ===
-How are you feeling today? 
+How are you feeling today? Anything hurt? Anything make you feel uncomfortable?<anim:wave> Do you feel happy?</anim><anim:shake> Do you feel sad??? </anim>
 + [Happy]
     That makes me feel happy as well! #emotion:0
 + [Sad]
