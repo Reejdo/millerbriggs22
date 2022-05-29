@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
 {
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
+    private Animator layoutAnimator; 
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private TextMeshProUGUI displayNameText;
@@ -17,6 +18,11 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]
     private float emotion = 0;
+    [SerializeField]
+    private float disableUITime = 0.5f; 
+
+
+    [SerializeField] private DialoguePanel dialoguePanelParent; 
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -31,8 +37,6 @@ public class DialogueManager : MonoBehaviour
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
     private const string EMOTION_TAG = "emotion";
-
-
 
 
     //only allow outside scripts to read the value, not to modify
@@ -61,8 +65,12 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        //make sure dialogue is off and UI is disabled
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+
+        //Get the layout animator component
+        layoutAnimator = dialoguePanel.GetComponent<Animator>(); 
 
         //get all of the choices text
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -72,6 +80,9 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = obj.GetComponentInChildren<TextMeshProUGUI>();
             index++; 
         }
+
+        dialoguePanelParent = dialoguePanelParent.gameObject.GetComponent<DialoguePanel>(); 
+
     }
 
     private void Update()
@@ -94,12 +105,23 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
-        ContinueStory(); 
+        //panel enlarge
+        StartCoroutine(dialoguePanelParent.PanelGrow());
+
+        //set portrait, layout, speaker to default values
+        displayNameText.text = "???";
+        portraitAnimator.Play("default");
+        layoutAnimator.Play("left"); 
+
+        ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
     {
-        yield return new WaitForSeconds(0.2f); 
+        //panel shrink
+        StartCoroutine(dialoguePanelParent.PanelShrink());
+
+        yield return new WaitForSeconds(disableUITime); 
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -155,6 +177,7 @@ public class DialogueManager : MonoBehaviour
             {
                 case SPEAKER_TAG:
                     //Debug.Log("speaker=" + tagValue);
+                    //set text for name
                     displayNameText.text = tagValue; 
                     break;
                 case PORTRAIT_TAG:
@@ -164,9 +187,12 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case LAYOUT_TAG:
                     //Debug.Log("layout=" + tagValue);
+                    //play animation based on name
+                    layoutAnimator.Play(tagValue); 
                     break;
                 case EMOTION_TAG:
                     //Debug.Log("emotion=" + tagValue);
+                    //set value for which emotion will be played, using blend trees to swap between values
                     emotion = float.Parse(tagValue);
                     portraitAnimator.SetFloat("emotion", emotion); 
                     break;

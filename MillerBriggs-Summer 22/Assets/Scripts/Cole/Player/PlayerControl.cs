@@ -347,7 +347,6 @@ public class PlayerControl : MonoBehaviour
         {
             canMove = true;
             canJump = true;
-            canDash = true;
         }
     }
 
