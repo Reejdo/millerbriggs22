@@ -14,15 +14,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private TextMeshProUGUI displayNameText;
-    [SerializeField] private Animator portraitAnimator; 
+    [SerializeField] private Animator portraitAnimator;
+    [SerializeField] private Animator panelParentAnimator;
 
-    [SerializeField]
-    private float emotion = 0;
-    [SerializeField]
-    private float disableUITime = 0.5f; 
-
-
-    [SerializeField] private DialoguePanel dialoguePanelParent; 
+    [SerializeField] private float emotion = 0;
+    private float growAnimWaitTime = 0.5f; 
+    [SerializeField] private float disableUITime = 0.5f; 
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -55,13 +52,6 @@ public class DialogueManager : MonoBehaviour
         dialogueVertexAnimator = new DialogueVertexAnimator(textBox);
     }
 
-    /*
-    public static DialogueManager GetInstance()
-    {
-        return instance; 
-    }
-    */ 
-
 
     private void Start()
     {
@@ -80,8 +70,6 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = obj.GetComponentInChildren<TextMeshProUGUI>();
             index++; 
         }
-
-        dialoguePanelParent = dialoguePanelParent.gameObject.GetComponent<DialoguePanel>(); 
 
     }
 
@@ -105,21 +93,31 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
-        //panel enlarge
-        StartCoroutine(dialoguePanelParent.PanelGrow());
-
         //set portrait, layout, speaker to default values
         displayNameText.text = "???";
         portraitAnimator.Play("default");
-        layoutAnimator.Play("left"); 
+        layoutAnimator.Play("left");
+
+        StartCoroutine(PanelAnimStart()); 
 
         ContinueStory();
     }
 
+    IEnumerator PanelAnimStart()
+    {
+        //panel enlarge
+        panelParentAnimator.Play(PanelAnimations.Grow.ToString());
+
+        yield return new WaitForSeconds(growAnimWaitTime);
+
+        panelParentAnimator.Play(PanelAnimations.defaultAnim.ToString());
+    }
+
+
     private IEnumerator ExitDialogueMode()
     {
         //panel shrink
-        StartCoroutine(dialoguePanelParent.PanelShrink());
+        panelParentAnimator.Play(PanelAnimations.Shrink.ToString());
 
         yield return new WaitForSeconds(disableUITime); 
 
@@ -131,6 +129,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typeRoutine = null;
     private void ContinueStory()
     {
+
         if (currentStory.canContinue)
         {
             //set text for current dialogue line
@@ -248,5 +247,13 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex); 
     }
+
+    enum PanelAnimations 
+    {
+        defaultAnim, 
+        Grow, 
+        Shrink
+    }
+
 
 }
