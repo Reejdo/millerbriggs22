@@ -77,7 +77,9 @@ public class PlayerControl : MonoBehaviour
     {
         SetJumpCountMax(); 
         myRigidBody2D = GetComponent<Rigidbody2D>();
-        footEmission = footSteps.emission; 
+        footEmission = footSteps.emission;
+
+        facingDirection = 1; 
     }
 
     // Update is called once per frame
@@ -228,10 +230,14 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0.1)
         {
             dashDirX = 1;
+            //update facing direction
+            facingDirection = 1; 
         }
         else if (Input.GetAxisRaw("Horizontal") < -0.1)
         {
             dashDirX = -1;
+            //update facing direction
+            facingDirection = -1; 
         }
         else
         {
@@ -260,7 +266,7 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                dashDirX = 1;
+                dashDirX = facingDirection;
             }
         }
 
