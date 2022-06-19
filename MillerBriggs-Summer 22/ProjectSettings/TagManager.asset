@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
+  - Velocity
   - 
   - 
   - 
@@ -50,12 +50,18 @@ TagManager:
   - name: Objects
     uniqueID: 3149596309
     locked: 0
+  - name: FaunaBack
+    uniqueID: 879617539
+    locked: 0
   - name: Player
     uniqueID: 1795284367
     locked: 0
   - name: Particles
     uniqueID: 519155181
     locked: 0
-  - name: Foreground
-    uniqueID: 879617539
+  - name: GroundTiles
+    uniqueID: 3185593969
+    locked: 0
+  - name: FaunaFront
+    uniqueID: 3094120817
     locked: 0

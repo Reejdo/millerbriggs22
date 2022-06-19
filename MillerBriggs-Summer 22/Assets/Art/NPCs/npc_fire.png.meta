@@ -1,46 +1,31 @@
 fileFormatVersion: 2
-guid: a68c61c06c292784d9dfd57ebddfb081
+guid: 837a4fb8451090e4e905c51ab3e8a1ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5361785216984616780
-    second: outside_tiles_0
+      213: -2385091277905078100
+    second: npc_fire_0
   - first:
-      213: 7205837471281215621
-    second: outside_tiles_1
+      213: -2069308431735608738
+    second: npc_fire_1
   - first:
-      213: 2517826883779314581
-    second: outside_tiles_2
+      213: -8503374725479498929
+    second: npc_fire_2
   - first:
-      213: 3000774238514784280
-    second: outside_tiles_3
+      213: 7776714430503976040
+    second: npc_fire_3
   - first:
-      213: -7655677296188212693
-    second: outside_tiles_4
+      213: 9021765783649716614
+    second: npc_fire_4
   - first:
-      213: 4549070590188658514
-    second: outside_tiles_5
+      213: -2051199054431691179
+    second: npc_fire_5
   - first:
-      213: -470169908536101661
-    second: outside_tiles_6
+      213: -1909809242305568610
+    second: npc_fire_6
   - first:
-      213: -4519085269522154160
-    second: outside_tiles_7
-  - first:
-      213: -505216432157104373
-    second: outside_tiles_8
-  - first:
-      213: -2485556157585922985
-    second: outside_tiles_9
-  - first:
-      213: 8704218014524392928
-    second: outside_tiles_10
-  - first:
-      213: -7920142767753643690
-    second: outside_tiles_11
-  - first:
-      213: 7372292650623042175
-    second: outside_tiles_12
+      213: 2231118552389517182
+    second: npc_fire_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,8 +91,8 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,8 +103,8 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,8 +115,8 @@ TextureImporter:
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -142,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: outside_tiles_0
+      name: npc_fire_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 224
-        width: 32
-        height: 32
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,41 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b0f0bbc0cc1795b0800000000000000
-      internalID: -5361785216984616780
+      spriteID: ca8d5979e1476eed0800000000000000
+      internalID: -2385091277905078100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: outside_tiles_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5887ae08007400460800000000000000
-      internalID: 7205837471281215621
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: outside_tiles_2
+      name: npc_fire_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 224
-        width: 32
-        height: 32
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,41 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5934895f53e11f220800000000000000
-      internalID: 2517826883779314581
+      spriteID: e5aadabe1f65843e0800000000000000
+      internalID: -2069308431735608738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: outside_tiles_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 81821d96544e4a920800000000000000
-      internalID: 3000774238514784280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: outside_tiles_4
+      name: npc_fire_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 224
-        width: 32
-        height: 32
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,41 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2abda58f0291c590800000000000000
-      internalID: -7655677296188212693
+      spriteID: f4b72cf6db1fdf980800000000000000
+      internalID: -8503374725479498929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: outside_tiles_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 224
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25f1f5a899b812f30800000000000000
-      internalID: 4549070590188658514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: outside_tiles_6
+      name: npc_fire_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 224
-        width: 32
-        height: 32
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e4b0a195fe9979f0800000000000000
-      internalID: -470169908536101661
+      spriteID: 86cf7dd52907ceb60800000000000000
+      internalID: 7776714430503976040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: outside_tiles_7
+      name: npc_fire_4
       rect:
         serializedVersion: 2
-        x: 224
-        y: 224
-        width: 32
-        height: 32
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05d7e68f3ebf841c0800000000000000
-      internalID: -4519085269522154160
+      spriteID: 689073d4e20c33d70800000000000000
+      internalID: 9021765783649716614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: outside_tiles_8
+      name: npc_fire_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 32
-        height: 32
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b07e59ae45c1df8f0800000000000000
-      internalID: -505216432157104373
+      spriteID: 55e5bf4e35da883e0800000000000000
+      internalID: -2051199054431691179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: outside_tiles_9
+      name: npc_fire_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 192
-        width: 32
-        height: 32
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7546ecdf7d7818dd0800000000000000
-      internalID: -2485556157585922985
+      spriteID: e906e9bdc9efe75e0800000000000000
+      internalID: -1909809242305568610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: outside_tiles_10
+      name: npc_fire_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
-        width: 32
-        height: 32
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -366,50 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e54843da289bc870800000000000000
-      internalID: 8704218014524392928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: outside_tiles_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6593aad8d10061290800000000000000
-      internalID: -7920142767753643690
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: outside_tiles_12
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f720c9c0b15af4660800000000000000
-      internalID: 7372292650623042175
+      spriteID: e7ff5fe908686fe10800000000000000
+      internalID: 2231118552389517182
       vertices: []
       indices: 
       edges: []
