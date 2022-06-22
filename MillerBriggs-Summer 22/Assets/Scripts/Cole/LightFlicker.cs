@@ -5,25 +5,20 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class LightFlicker : MonoBehaviour
 {
-    public Transform mainLight;
-    public Transform flickerLight;
-    private Light2D mainLightComponent;
-    private Light2D flickerLightComponent;
+    public Light2D flickerLightComponent;
     public float lowIntensity, highIntensity;
-    public float maxFlickerTime; 
+    public float maxFlickerTime;
+    public bool flickerOn = true; 
 
     // Start is called before the first frame update
     void Start()
     {
-        mainLightComponent = mainLight.GetComponent<Light2D>();
-        flickerLightComponent = flickerLight.GetComponent<Light2D>();
-
         StartCoroutine(Timer());
     }
 
     IEnumerator Timer()
     {
-        for (; ; ) //this is while(true)
+        while (flickerOn)
         {
             float randomIntensity = Random.Range(lowIntensity, highIntensity);
             flickerLightComponent.intensity = randomIntensity;

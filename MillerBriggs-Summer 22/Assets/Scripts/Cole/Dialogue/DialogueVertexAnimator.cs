@@ -161,6 +161,12 @@ public class DialogueVertexAnimator
         onFinish?.Invoke();
     }
 
+    //used to enable pointer to next sentence
+    public bool isTextAnimating()
+    {
+        return textAnimating; 
+    }
+
     private const float NOISE_MAGNITUDE_ADJUSTMENT = 0.06f;
     private const float NOISE_FREQUENCY_ADJUSTMENT = 15f;
     private const float WAVE_MAGNITUDE_ADJUSTMENT = 0.06f;

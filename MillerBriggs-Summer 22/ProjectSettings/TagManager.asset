@@ -62,6 +62,9 @@ TagManager:
   - name: GroundTiles
     uniqueID: 3185593969
     locked: 0
+  - name: Foreground
+    uniqueID: 236708211
+    locked: 0
   - name: FaunaFront
     uniqueID: 3094120817
     locked: 0

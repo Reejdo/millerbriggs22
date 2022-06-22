@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class DialogueTrigger : MonoBehaviour
     private bool playerInRange;
 
     [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON; 
+    [SerializeField] private TextAsset[] inkJSON;
+
+    [SerializeField] private int maxDialogues; 
+    private int currentDialogue = 1; 
 
 
     private void Awake()
     {
-        visualCue.SetActive(false);
         playerInRange = false; 
     }
 
@@ -23,17 +26,36 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (playerInRange && !DialogueManager.instance.dialogueIsPlaying)
         {
-            visualCue.SetActive(true); 
+            //visualCue.SetActive(true); 
+            
             if (InputManager.GetInstance().GetInteractPressed())
             {
                 //Debug.Log(inkJSON.text); 
-                DialogueManager.instance.EnterDialogueMode(inkJSON);
+                DialogueManager.instance.EnterDialogueMode(inkJSON[currentDialogue - 1]);
+                IncreaseDialogueCount();
             }
 
         }
+    }
+
+    void IncreaseDialogueCount()
+    {
+        if (maxDialogues > 1)
+        {
+            //we never want to go back to the first dialogue
+            //set it to the second dialogue if we are at max dialogue
+            if (currentDialogue == maxDialogues)
+            {
+                currentDialogue = 2; 
+            }
+            else
+            {
+                currentDialogue++; 
+            }
+        }
         else
         {
-            visualCue.SetActive(false); 
+            currentDialogue = 1; 
         }
     }
 

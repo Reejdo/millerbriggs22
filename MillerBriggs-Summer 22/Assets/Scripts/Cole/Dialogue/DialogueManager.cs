@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
     [SerializeField] private Animator panelParentAnimator;
+    [SerializeField] private GameObject dialoguePointer; 
 
     [SerializeField] private float emotion = 0;
     private float growAnimWaitTime = 0.5f; 
@@ -23,8 +24,11 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
-    private TextMeshProUGUI[] choicesText; 
+    private TextMeshProUGUI[] choicesText;
 
+    [Header("Other Settings")]
+    public bool speakerHasName = false;
+    public GameObject speakerBox; 
 
     public static DialogueManager instance {get; private set; }
 
@@ -58,6 +62,13 @@ public class DialogueManager : MonoBehaviour
         //make sure dialogue is off and UI is disabled
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+        dialoguePointer.SetActive(false); 
+
+        //disable if we don't want speaker to have a name
+        if (!speakerHasName)
+        {
+            speakerBox.SetActive(false); 
+        }
 
         //Get the layout animator component
         layoutAnimator = dialoguePanel.GetComponent<Animator>(); 
@@ -85,6 +96,11 @@ public class DialogueManager : MonoBehaviour
             ContinueStory();
         }
 
+        //check if dialogue is done, display pointer if so
+        if (dialogueIsPlaying)
+        {
+            displayPointer(); 
+        }
     }
 
     public void EnterDialogueMode(TextAsset inkJSON)
@@ -202,7 +218,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
     private void DisplayChoices()
     {
         //Choice is an Inky variable type
@@ -248,6 +263,20 @@ public class DialogueManager : MonoBehaviour
         currentStory.ChooseChoiceIndex(choiceIndex); 
     }
 
+    void displayPointer()
+    {
+        bool isTextAnimating = dialogueVertexAnimator.isTextAnimating(); 
+
+        if (isTextAnimating)
+        {
+            dialoguePointer.SetActive(false); 
+        }
+        else
+        {
+            dialoguePointer.SetActive(true); 
+        }
+
+    }
     enum PanelAnimations 
     {
         defaultAnim, 
