@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PuzzleObject
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Ground
   - Player
   - Velocity
-  - 
+  - PuzzleObj
   - 
   - 
   - 
@@ -47,11 +48,11 @@ TagManager:
   - name: Ground
     uniqueID: 1607209187
     locked: 0
-  - name: Objects
-    uniqueID: 3149596309
-    locked: 0
   - name: FaunaBack
     uniqueID: 879617539
+    locked: 0
+  - name: Objects
+    uniqueID: 3149596309
     locked: 0
   - name: Player
     uniqueID: 1795284367
