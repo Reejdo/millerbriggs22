@@ -21,15 +21,21 @@ public class ImproveJump : MonoBehaviour
     void Update()
     {
         //subtract 1 to account for normal gravity on player
-        
         if (myRigidBody2D.velocity.y < 0)
         {
-            myRigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime; 
+            myRigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
         else if (Input.GetKeyUp(myPlayerControl.jumpKeyCode) || !Input.GetKey(myPlayerControl.jumpKeyCode))
         {
             myRigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        } 
-
+        }
+        else if (myPlayerControl.isWallSliding)
+        {
+            if (myRigidBody2D.velocity.y < -myPlayerControl.wallSlideSpeed)
+            {
+                Debug.Log("Wall Slide");
+                myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, -myPlayerControl.wallSlideSpeed);
+            }
+        }
     }
 }

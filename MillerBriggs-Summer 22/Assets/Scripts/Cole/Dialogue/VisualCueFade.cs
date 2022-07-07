@@ -8,10 +8,15 @@ public class VisualCueFade : MonoBehaviour
     //image to fade
     private SpriteRenderer img;
 
-    [SerializeField] private float fadeTime;
+    private float fade; 
+    [SerializeField] private float fadeTime; 
+    private float fadeSpeed = 0.0f;
+    [SerializeField]
+    private bool fadeIn = false; 
 
     private void Awake()
     {
+
         //visualCue.SetActive(false);
         img = visualCue.GetComponent<SpriteRenderer>();
 
@@ -19,44 +24,27 @@ public class VisualCueFade : MonoBehaviour
         img.color = new Color(1, 1, 1, 0);
     }
 
-    //false for fade in, true for fade out
-    IEnumerator FadeImage(bool fadeAway)
+
+    private void Update()
     {
-        float alpha = 0;
-        Debug.Log("Fading");
-        // fade from opaque to transparent
-        if (fadeAway)
+        if (fadeIn)
         {
-            // loop over 1 second backwards
-            for (float i = fadeTime; i >= 0; i -= Time.deltaTime)
+            if (img.color.a != 1f)
             {
-                // set color with i as alpha
-                alpha = (i - 0) / (fadeTime - 0); //Normalize value between 0 and 1
-
-                // set color with i as alpha
-                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
-
-                yield return null;
-            }
-            //guarantee it equals 0 
-            img.color = new Color(1, 1, 1, 0);
+                Debug.Log("Fade in!");
+                fade = Mathf.SmoothDamp(img.color.a, 1f, ref fadeSpeed, fadeTime);
+                img.color = new Color(1f, 1f, 1f, fade);
+            }            
         }
-        // fade from transparent to opaque
-        else
+
+        if (!fadeIn)
         {
-            // loop over 1 second
-            for (float i = 0; i <= fadeTime; i += Time.deltaTime)
+            if (img.color.a != 0f)
             {
-                // set color with i as alpha
-                alpha = (i - 0) / (fadeTime - 0); //Normalize value between 0 and 1
-
-                // set color with i as alpha
-                img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
-
-                yield return null;
+                Debug.Log("Fade out!"); 
+                fade = Mathf.SmoothDamp(img.color.a, 0f, ref fadeSpeed, fadeTime);
+                img.color = new Color(1f, 1f, 1f, fade);
             }
-
-            img.color = new Color(1, 1, 1, 1);
         }
     }
 
@@ -65,7 +53,8 @@ public class VisualCueFade : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            StartCoroutine(FadeImage(false));
+            //StartCoroutine(FadeImage(false));
+            fadeIn = true; 
         }
     }
 
@@ -73,7 +62,8 @@ public class VisualCueFade : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            StartCoroutine(FadeImage(true));
+            //StartCoroutine(FadeImage(true));
+            fadeIn = false; 
         }
     }
 
