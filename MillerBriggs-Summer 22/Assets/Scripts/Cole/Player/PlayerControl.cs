@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D myRigidBody2D;
+    private Animator myAnim;
+    private DialogueManager myDialogueManager; 
+
     [SerializeField] private BoxCollider2D playerCollider;
 
     [Header("[Finding Ground]")]
@@ -13,8 +16,6 @@ public class PlayerControl : MonoBehaviour
     public LayerMask whatIsGround;
     [SerializeField]
     private bool isGrounded;
-
-    private Animator myAnim;
 
     [Header("[Movement]")]
     [SerializeField] private float moveSpeed; 
@@ -60,6 +61,7 @@ public class PlayerControl : MonoBehaviour
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
+        myDialogueManager = GameObject.FindObjectOfType<DialogueManager>(); 
 
         facingDirection = 1;
 
@@ -74,7 +76,11 @@ public class PlayerControl : MonoBehaviour
     {
         isGrounded = CheckGrounded(); 
 
-        Jump();
+        if (!myDialogueManager.dialogueIsPlaying)
+        {
+            Jump();
+        }
+
         SetJumpCountLower();
 
         UpdateCameraPosition();
@@ -212,6 +218,7 @@ public class PlayerControl : MonoBehaviour
             isWallSliding = false;
             currentJumps--;
             Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * -facingDirection, wallJumpForce * wallJumpDirection.y);
+            Debug.Log("ForceX: " + forceToAdd.x + " ForceY: " + forceToAdd.y); 
             myRigidBody2D.AddForce(forceToAdd, ForceMode2D.Impulse);
             Debug.Log("WallJump");
             facingDirection = -facingDirection; 
