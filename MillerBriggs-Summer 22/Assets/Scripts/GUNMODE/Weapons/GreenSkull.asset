@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0242a1b8ac9719640a7e2b9c69405659, type: 3}
+  m_Name: GreenSkull
+  m_EditorClassIdentifier: 
+  bulletType: {fileID: 8318430114918730604, guid: 67bcab34f60b4604d86ffefeaf833435, type: 3}
+  gunBulletDelay: 1
+  bulletSpreadRange: 25
+  maxAmmo: 30
+  weaponProjectileNumber: 4
+  currentMinDamage: 2
+  currentMaxDamage: 5
+  bulletID: 1

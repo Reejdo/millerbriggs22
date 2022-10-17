@@ -1,0 +1,2 @@
+<sp:25>Hey there fella. I kinda need to get past you, so I'm gonna jump over you.#folder:LevelOne #vc:s_1_Player_1 #speaker:Me #portrait:player_default #emotion:0 #layout:left
+<sp:25>I think the SPACE button will let me do that...let's give it a whirl!  

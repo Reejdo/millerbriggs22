@@ -6,6 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Loading.unity
+    guid: 121c5a8b1f684dd4c995207752f37a0b
+  - enabled: 1
+    path: Assets/Scenes/Scene_Opening.unity
+    guid: 83f63b56833b14f4e8d872b81bd12624
+  - enabled: 1
+    path: Assets/Scenes/Scene_DreamCampus_v1.unity
+    guid: a3cc9828154c6c94282900278a852dc7
+  - enabled: 1
+    path: Assets/Scenes/Scene_CortexTower.unity
+    guid: 8f7de3ed32c729e49bf0ba86d6cc1e67
+  - enabled: 1
+    path: Assets/Scenes/Scene_ECol_v1.unity
+    guid: e1b39ae8aaefb034b8c3a6fceefa6bc6
+  - enabled: 1
+    path: Assets/Scenes/Scene_ECol_v2.unity
+    guid: 5241a517e0c3eab4d81ec2286dddb89e
+  - enabled: 1
+    path: Assets/Scenes/Scene_GunTown.unity
+    guid: 73ca75021c539cf4591adcb78ff46689
+  - enabled: 1
+    path: Assets/Scenes/Scene_Gun.unity
+    guid: 24f084ab683b61042b9c0ace745f6e30
   m_configObjects: {}

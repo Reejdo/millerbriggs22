@@ -1,0 +1,1 @@
+<sp:25>Looks like they're not talking to each other right now. #folder:LevelOne #speaker:Me #portrait:player_default #emotion:0 #layout:left

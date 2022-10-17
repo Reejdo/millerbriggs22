@@ -1,0 +1,1 @@
+<sp:25>Is..is he chanting "orange" under his breath? #speaker:Me #portrait:player_default #emotion:0 #layout:left

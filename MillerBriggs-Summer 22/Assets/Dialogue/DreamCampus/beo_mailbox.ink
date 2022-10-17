@@ -1,0 +1,1 @@
+<sp:25>[Beo’s Mailbox is full of letters from Reo, all complaining about eating the last bug.] #speaker:? #portrait:default #emotion:0 #layout:left

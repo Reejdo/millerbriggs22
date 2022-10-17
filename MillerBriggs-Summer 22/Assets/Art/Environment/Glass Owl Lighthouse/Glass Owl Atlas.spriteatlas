@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Glass Owl Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: 293d5aff7fcbbae4f99af47f0f55c6d7, type: 3}
+    - {fileID: 21300000, guid: cdaafcd8116e07945bf69b3eb71bdc35, type: 3}
+    - {fileID: 2800000, guid: e894556bc45a5dd42bfaee6e5c54489d, type: 3}
+    - {fileID: 2800000, guid: 9e3992d7270ca264489cb09185740484, type: 3}
+    - {fileID: 2800000, guid: a5c37ac7e36b77e4694431ef9b70ebdd, type: 3}
+    - {fileID: 2800000, guid: 043697ede19c4e34993dfadb1db3b310, type: 3}
+    - {fileID: 2800000, guid: 48c11191fe1509d4189d7493c43a339b, type: 3}
+    - {fileID: 2800000, guid: f9c31cea8999ab74bb57d28b74366ef9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 48c11191fe1509d4189d7493c43a339b, type: 3}
+  - {fileID: 21300000, guid: a5c37ac7e36b77e4694431ef9b70ebdd, type: 3}
+  - {fileID: 5817784932124304660, guid: 9e3992d7270ca264489cb09185740484, type: 3}
+  - {fileID: 8853666545041660397, guid: 9e3992d7270ca264489cb09185740484, type: 3}
+  - {fileID: -3804424646102524024, guid: 9e3992d7270ca264489cb09185740484, type: 3}
+  - {fileID: -4216566101905086354, guid: 9e3992d7270ca264489cb09185740484, type: 3}
+  - {fileID: 21300000, guid: cdaafcd8116e07945bf69b3eb71bdc35, type: 3}
+  - {fileID: 21300000, guid: f9c31cea8999ab74bb57d28b74366ef9, type: 3}
+  - {fileID: -2286136885559848271, guid: e894556bc45a5dd42bfaee6e5c54489d, type: 3}
+  - {fileID: 5476328914024118197, guid: e894556bc45a5dd42bfaee6e5c54489d, type: 3}
+  - {fileID: -3688215807515788523, guid: e894556bc45a5dd42bfaee6e5c54489d, type: 3}
+  - {fileID: 21300000, guid: 043697ede19c4e34993dfadb1db3b310, type: 3}
+  - {fileID: 21300000, guid: 293d5aff7fcbbae4f99af47f0f55c6d7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - staircase
+  - lighthouse_background
+  - playerRunning_0
+  - playerRunning_1
+  - playerRunning_2
+  - playerRunning_3
+  - e_col_piano
+  - lighthouse_owl
+  - playerPoses_2
+  - playerPoses_1
+  - playerPoses_0
+  - window
+  - playerIdle
+  m_RenderDataMap: {}
+  m_Tag: Glass Owl Atlas
+  m_IsVariant: 0

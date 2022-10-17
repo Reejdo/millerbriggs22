@@ -19,7 +19,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 180, z: 0}
+        value: {x: 0, y: -180, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -29,16 +29,16 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: playerSprite
+    path: spriteManager/playerSprite
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: e31f19702460ded478ed5d8937f797db, type: 3}
+      value: {fileID: 21300000, guid: 293d5aff7fcbbae4f99af47f0f55c6d7, type: 3}
     attribute: m_Sprite
-    path: playerSprite
+    path: spriteManager/playerSprite
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 12
@@ -49,21 +49,21 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 133897586
+      path: 931325793
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
     - serializedVersion: 2
-      path: 133897586
+      path: 931325793
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: e31f19702460ded478ed5d8937f797db, type: 3}
+    - {fileID: 21300000, guid: 293d5aff7fcbbae4f99af47f0f55c6d7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -101,7 +101,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: playerSprite
+    path: spriteManager/playerSprite
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -109,7 +109,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 180
+        value: -180
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -120,7 +120,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: playerSprite
+    path: spriteManager/playerSprite
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -139,7 +139,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: playerSprite
+    path: spriteManager/playerSprite
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -150,7 +150,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: playerSprite
+    path: spriteManager/playerSprite
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -160,7 +160,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: playerSprite
+    path: spriteManager/playerSprite
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -170,7 +170,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: playerSprite
+    path: spriteManager/playerSprite
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
