@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8955242412712732911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8955242412712732908}
+  - component: {fileID: 8955242412712732909}
+  m_Layer: 0
+  m_Name: AirTimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8955242412712732908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955242412712732911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8955242412943452803}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8955242412712732909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955242412712732911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae155f625f303c49af1e03bfe6a6cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p_AirTime: 0
+  p_LastAirTime: 0
+  t_hitGround: 0.5
+  t_ExtremeFall: 1.75
+  t_FarthestFall: 2.5
+  hitGround: 6
+  voiceLineTriggers: {fileID: 8955242412943452800}
+  vcPercentChance: 0.5
+--- !u!1 &8955242412943452802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8955242412943452803}
+  - component: {fileID: 8955242412943452800}
+  m_Layer: 0
+  m_Name: ReactDialogues
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8955242412943452803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955242412943452802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8955242412712732908}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8955242412943452800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955242412943452802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2f2f3a97b75d544b00fbf7fc1676a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myDialogueObjects:
+  - {fileID: 11400000, guid: 1f7f444211a947348b524a82f4aeee94, type: 2}
+  - {fileID: 11400000, guid: 72732583e2df33748a1143cf4d7345b1, type: 2}
+  - {fileID: 11400000, guid: cbcc6d1253d2ded4bab8853596e77e1b, type: 2}
+  - {fileID: 11400000, guid: 6af6d2795bf5fd142a5e09c4f88032a0, type: 2}
+  - {fileID: 11400000, guid: 06115419ac0c2af46862a95cdbbc5bf2, type: 2}
+  - {fileID: 11400000, guid: 792c3b5b90276a04091d835bedab376b, type: 2}
+  - {fileID: 11400000, guid: c26dcb3833f13c34caff8ac3283df488, type: 2}
+  - {fileID: 11400000, guid: d4cd3c4146091e4499b2ca1cebbad65c, type: 2}
+  - {fileID: 11400000, guid: b9e8a3eb93279b049b15c6f1bf136037, type: 2}
+  - {fileID: 11400000, guid: 3efa6784c77ab484c828ed82affe375a, type: 2}
+  - {fileID: 11400000, guid: d15d83ee080452b479525011c586a58c, type: 2}
+  - {fileID: 11400000, guid: d6c785d4607a4f2419a47b78181e6cd1, type: 2}
+  - {fileID: 11400000, guid: cb10738fca1b0214ead8ca87d7acb341, type: 2}
+  - {fileID: 11400000, guid: c0875010143f97541be305ad700a2847, type: 2}
+  - {fileID: 11400000, guid: 0b9ee7fd05f8db54185349631519db28, type: 2}
+  - {fileID: 11400000, guid: 54120ebe6cde3584c87799b96a48988e, type: 2}
+  UIElements: []

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_0.3
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - Well, there it is. The bridge.
+    - "Not too much more work, I just need to round up the wood I couldn\u2019t carry
+      last time."
+    - 'Of course, that wood is scattered all over the place. I even cut a little
+      more than I needed to last time I took the journey. There should be some extra
+      laying around. '
+    - 'I think there''s even a pile all the way at the top that should be enough
+      just on its own. '
+    - "Navigating this strange terrain won\u2019t be easy -- well, it never is, but
+      I\u2019m sure I can manage one last time. "
+    - "Let\u2019s just hope the mountain doesn\u2019t give me a challenge I can\u2019t
+      handle. "
+    audioClips:
+    - {fileID: 8300000, guid: 616b2e6697a4ddb4eb32684604ba900e, type: 3}
+    - {fileID: 8300000, guid: 198d4a4a95051a649a930299ba9a7d3f, type: 3}
+    - {fileID: 8300000, guid: cfde8a3d3da721c4e8663eedcb3c231a, type: 3}
+    - {fileID: 8300000, guid: 8c1c6e68f99cf0d4eb2dfcaf043e6b36, type: 3}
+    - {fileID: 8300000, guid: 7849be6f9a01b7342802f989723a74ca, type: 3}
+    - {fileID: 8300000, guid: eea06680709d99e43a499a167d8069f3, type: 3}

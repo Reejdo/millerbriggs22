@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_0.2
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - 'I wonder what I''ll find way up there, at the top. '
+    - 'Your dad sure didn''t know, and neither did you. That was always the allure
+      of reaching the peak, huh? '
+    - Guess I'll have to find out for all of us. Maybe it'll be a lost city, or a
+      pillar of gold. Or maybe...it'll just be rock.
+    - Probably that last one, but I suppose it ain't about what's up there, really.
+    audioClips:
+    - {fileID: 8300000, guid: fb31312280ab33649b60297e2afcd8a8, type: 3}
+    - {fileID: 8300000, guid: 3b9903b33e6a7804b9655edd90e96cf9, type: 3}
+    - {fileID: 8300000, guid: fdb735bc85ca6244b871859add7cecb2, type: 3}
+    - {fileID: 8300000, guid: 7054569d685da9d41849da50b0189222, type: 3}

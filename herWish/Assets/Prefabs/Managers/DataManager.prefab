@@ -1,0 +1,194 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9143554244465492512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9143554244465492511}
+  - component: {fileID: 9143554244465492510}
+  - component: {fileID: 9143554244465492509}
+  - component: {fileID: 5484825031580646246}
+  - component: {fileID: 7411014427640431611}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9143554244465492511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143554244465492512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1404.3525, y: -736.6805, z: 405.50653}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9143554244465492510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143554244465492512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a3f17004e8b564dbaafc3d491c49b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultScene: 2
+  lastLevelLoaded: 
+  playerPosX: 0
+  playerPosY: 0
+  startX: -148.62
+  startY: -0.15
+  myLoadScene: {fileID: 5484825031580646246}
+  LoadScene:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5484825031580646246}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5484825031580646246}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadScene1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5484825031580646246}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadScene2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5484825031580646246}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadScene3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5484825031580646246}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadCutScene1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5484825031580646246}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadCutScene2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  allDialogues: {fileID: 11400000, guid: dac65de4f9250594ba8abbecd4ae43a0, type: 2}
+  logInventory: {fileID: 11400000, guid: e6c67f2a7777cd24da6e5e23950c6fdb, type: 2}
+  settingValues: {fileID: 11400000, guid: 7c1de0e7f1a2dbb4e932f943d5146b4c, type: 2}
+  mySaveData: {fileID: 7411014427640431611}
+--- !u!114 &9143554244465492509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143554244465492512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a36be760637ccf48ad93800f0f1243a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: /levelSaveData.txt
+  levelName: []
+  playerPosX: []
+  playerPosY: []
+  path: 
+--- !u!114 &5484825031580646246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143554244465492512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a2596424c3f0441aec0ca0be4f560d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7411014427640431611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143554244465492512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be4f2c92fb7850408a87d0e5f65d5f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logInventory: {fileID: 11400000, guid: e6c67f2a7777cd24da6e5e23950c6fdb, type: 2}
+  movePlatform: {fileID: 11400000, guid: 71897806df38d3041809f15fb55479aa, type: 2}
+  tempMovePlatform: {fileID: 11400000, guid: badaa5ae9f5c3a945887bdd78dec0f28, type: 2}
+  allDialogues: {fileID: 11400000, guid: dac65de4f9250594ba8abbecd4ae43a0, type: 2}
+  tempDialogues: {fileID: 11400000, guid: b553ec43a81b01d45bcc8c1facfd8b32, type: 2}
+  settingValues: {fileID: 11400000, guid: 7c1de0e7f1a2dbb4e932f943d5146b4c, type: 2}
+  tempSettings: {fileID: 11400000, guid: 80154b509497fe4488438e33072fe7cc, type: 2}
+  finishedValues: {fileID: 11400000, guid: 7d87adb163d07504f8bc441e959eb87e, type: 2}
+  tempFinValues: {fileID: 11400000, guid: 3dd33b3c8910bda40abc8353af138117, type: 2}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_transition
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - 'Alright, I think that should be enough wood to complete the bridge. '
+    - "I guess I\u2019ll head back down and get to work. "
+    - "It\u2019s weird, I\u2019m a little nervous here. This dream always seemed
+      so\u2026far away. Now it\u2019s closer than ever before. "
+    - "I swear I\u2019ll make it up there, Cath. "
+    audioClips:
+    - {fileID: 8300000, guid: 3a81714b7d5927444bbd3f7c0bfe92cb, type: 3}
+    - {fileID: 8300000, guid: c44a011744d9af247b5ab91c37d2cdc9, type: 3}
+    - {fileID: 8300000, guid: 4b029c3b26d7e014682521db9cfaa876, type: 3}
+    - {fileID: 8300000, guid: 4a6fdb2277f69ee44ae15b5515284f0e, type: 3}

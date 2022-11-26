@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_0.1
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - I suppose it's that time of year again.
+    - 'Time to make the trek, hopefully now for the last time. '
+    - 'I''m close, Cath, I''ve almost finished building it. It''s taken years, regular
+      wood won''t hold up year round in the changing harsh climate, but what I''m
+      using is special, and it''ll hold. '
+    - 'At least, as long as I need it to. This time I''ll see it through to the end. '
+    audioClips:
+    - {fileID: 8300000, guid: 7a15e2ed579b68549b14e881c4e33570, type: 3}
+    - {fileID: 8300000, guid: 3af37b62d17a6644d8689c8a80f5a5fb, type: 3}
+    - {fileID: 8300000, guid: 46016ed0d113e9a4ab30ef0f7d95ef66, type: 3}
+    - {fileID: 8300000, guid: 9f493512ae17b8e45b98a31025c1a7e1, type: 3}

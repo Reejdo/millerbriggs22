@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - AudioManager
+  - DialogueText
+  - VoiceLineManager
+  - DialogueManager
+  - PuzzleObject
+  - CameraFollow
+  - PlayerFileData
+  - BounceObject
+  - FlavorTrigger
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - Player
+  - Velocity
+  - null
+  - Wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3479826953
+    locked: 0
+  - name: BackParticles
+    uniqueID: 3785673891
+    locked: 0
+  - name: Ground
+    uniqueID: 1607209187
+    locked: 0
+  - name: FaunaBack
+    uniqueID: 879617539
+    locked: 0
+  - name: Canvas
+    uniqueID: 3487720757
+    locked: 0
+  - name: Objects
+    uniqueID: 3149596309
+    locked: 0
+  - name: LeafParticles
+    uniqueID: 1543126671
+    locked: 0
+  - name: Player
+    uniqueID: 1795284367
+    locked: 0
+  - name: Particles
+    uniqueID: 519155181
+    locked: 0
+  - name: GroundTiles
+    uniqueID: 3185593969
+    locked: 0
+  - name: Foreground
+    uniqueID: 236708211
+    locked: 0
+  - name: FaunaFront
+    uniqueID: 3094120817
+    locked: 0

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_1
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - "You always told me to write more sappy stuff, so here\u2019s me, trying my
+      best."
+    - "Sorry that I\u2019m writing this too late. I wish I had done it sooner."
+    - I remember it like it was yesterday. Spring. What a fine time to meet an even
+      finer gal.
+    - I, of course, was a younger man when I met you. It was outside a malt shop,
+      you were there with a group of your friends, and I was loitering around with
+      a group of mine.
+    - 'My best friend at the time had just cut ties with his girl of five years,
+      and we were there to cheer him up, or maybe find him a girl who could do that
+      easier. I wasn''t looking for much myself. '
+    - 'There were about nine of us and seven in your group, if I remember correctly.
+      However, as if seeing the-the radiant beacon of a lighthouse springing forth
+      from the sea, you caught my eye.  Your caramel hair shone like, like the moon
+      among a hundred stars, just as bright and even more beautiful. '
+    - 'Now, I don''t believe in love at first sight, honestly I think the notion
+      itself is a little silly. Love is, is more like a flower, it takes time to
+      blossom, and attraction is the seed. '
+    - 'But I''ve got to say, if it were real, I most certainly had it. '
+    - 'As we approached the other group, you turned towards us, laughing at something
+      Susan or Mary had whispered in your ear. Your smile was so warm, so kind. '
+    - "At that moment, I already knew -- I told myself, I had got to get that woman.
+      Sometimes it\u2019s an instinct, and the moment I saw you, I knew that was
+      it. You were my dream, my wish."
+    audioClips:
+    - {fileID: 8300000, guid: a159b468dd2aac849a2708f9a54619bd, type: 3}
+    - {fileID: 8300000, guid: ec73f7d506d74504f91d7fde55c19082, type: 3}
+    - {fileID: 8300000, guid: 7e86641a5424a4b4da4aee496682df4b, type: 3}
+    - {fileID: 8300000, guid: 39701951f75411f4a8ded6fc315d0ab6, type: 3}
+    - {fileID: 8300000, guid: 435235e16aebea540b78cee680c6e7e1, type: 3}
+    - {fileID: 8300000, guid: c34360b503f610341aac13cf9d7bc510, type: 3}
+    - {fileID: 8300000, guid: c6e7f88c9365d204095cb1d26d8960df, type: 3}
+    - {fileID: 8300000, guid: e2359e11c2f0e6341be6e3a59201d627, type: 3}
+    - {fileID: 8300000, guid: 412086f1a2778fb44994b2f4471dba06, type: 3}
+    - {fileID: 8300000, guid: d5bec9726d602f343b4fbb9fef701e56, type: 3}
