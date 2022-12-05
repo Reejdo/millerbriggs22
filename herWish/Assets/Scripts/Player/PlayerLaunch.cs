@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class PlayerLaunch : MonoBehaviour
 {
@@ -10,18 +11,21 @@ public class PlayerLaunch : MonoBehaviour
     [SerializeField] float MIN_FORCE = 1f; 
     [SerializeField] float MAX_FORCE = 25f;
 
-    [SerializeField] private float bufferBetweenJumps = 0.5f;
-    private float bufferTimer;
+    //[SerializeField] private float bufferBetweenJumps = 0.5f;
+    //private float bufferTimer;
 
-    float bufferJustLaunched = 0.1f;
-    float justLaunchedTimer;
-    bool justLaunched;
+    [SerializeField] private float min_stretch_time = 1f;
+    [SerializeField] private float min_effect_time = 0.2f; 
+
+    private float bufferJustLaunched = 0.1f;
+    private float justLaunchedTimer;
+    private bool justLaunched;
     public bool mouseJustDown = false; 
 
     [SerializeField] float initialGColorValue = 70f, initialBColorValue = 1f; 
     private float iGColorNorm; 
 
-    public SpriteRenderer jumpDirector; 
+    public Image jumpDirector, jumpDirBackground;
 
     private PlayerControl myJumpPlayer;
     private Vector3 mousePosition;
@@ -29,16 +33,20 @@ public class PlayerLaunch : MonoBehaviour
 
 
     private AudioManager myAudioManager;
-    [SerializeField] private Sounds s_revJump, s_Jump; 
+    [SerializeField] private Sounds s_revJump, s_Jump;
+    [SerializeField] private Animator mySpriteAnim;
+    private PlayerVisualEffects myPlayerEffects; 
 
     // Start is called before the first frame update
     void Start()
     {
         myJumpPlayer = GetComponent<PlayerControl>();
+        myPlayerEffects = GetComponent<PlayerVisualEffects>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         myAudioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>(); 
 
         jumpDirector.gameObject.SetActive(false);
+        jumpDirBackground.gameObject.SetActive(false);
 
         iGColorNorm = initialGColorValue / 255f; 
     }
@@ -50,6 +58,7 @@ public class PlayerLaunch : MonoBehaviour
         {
             myJumpPlayer.isLaunching = false;
             jumpDirector.gameObject.SetActive(false);
+            jumpDirBackground.gameObject.SetActive(false);
         }
 
 
@@ -85,6 +94,7 @@ public class PlayerLaunch : MonoBehaviour
                     if (CalculateHoldForce(holdDownTime) > MIN_FORCE)
                     {
                         jumpDirector.gameObject.SetActive(true);
+                        jumpDirBackground.gameObject.SetActive(true);
 
                         //make sure player can't jump
                         myJumpPlayer.SetMoveState(false);
@@ -106,7 +116,7 @@ public class PlayerLaunch : MonoBehaviour
 
                     if (CalculateHoldForce(holdDownTime) > MIN_FORCE)
                     {
-                        LaunchPlayer(CalculateHoldForce(holdDownTime));
+                        LaunchPlayer(CalculateHoldForce(holdDownTime), holdDownTime);
 
                         myAudioManager.StopSound(s_revJump); 
                         myAudioManager.Play(s_Jump, true); 
@@ -114,6 +124,7 @@ public class PlayerLaunch : MonoBehaviour
                         myJumpPlayer.isLaunching = false;
                         myJumpPlayer.SetMoveState(true);
                         jumpDirector.gameObject.SetActive(false);
+                        jumpDirBackground.gameObject.SetActive(false);
 
                         justLaunched = true;
                         mouseJustDown = false;
@@ -138,9 +149,14 @@ public class PlayerLaunch : MonoBehaviour
                     myJumpPlayer.justLaunched = true;
                 }
             }
-
-
         }
+        else
+        {
+            holdStartTime = Time.time;
+            jumpDirector.gameObject.SetActive(false);
+            jumpDirBackground.gameObject.SetActive(false);
+        }
+
     }
 
     private float CalculateHoldForce(float holdTime)
@@ -154,12 +170,25 @@ public class PlayerLaunch : MonoBehaviour
     }
 
 
-    public void LaunchPlayer(float force)
+    public void LaunchPlayer(float force, float holdDownTime)
     {
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition); 
         Vector3 direction = mousePosition - transform.position;
 
         //Debug.Log(direction); 
+
+        if (direction.y > 0)
+        {
+            if (holdDownTime > min_stretch_time)
+            {
+                mySpriteAnim.SetTrigger("stretch");
+            }
+
+            if (holdDownTime > min_effect_time)
+            {
+                myPlayerEffects.SetJumpParticleState(true);
+            }
+        }
 
 
         myJumpPlayer.isJumping = true;
@@ -182,6 +211,10 @@ public class PlayerLaunch : MonoBehaviour
         float holdTimeNormalized = Mathf.Clamp01(holdTime / MAX_FORCE_HOLD_TIME);
 
         float gColor = 1 - holdTimeNormalized; 
+
+        float fillAmount = holdTimeNormalized;
+
+        jumpDirector.fillAmount = fillAmount; 
 
         if (gColor >= 0.5f)
         {

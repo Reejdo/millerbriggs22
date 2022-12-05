@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_3
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - "What else\u2026Ah! You know, one of my favorite things about you was your
+      little explosions of rage. "
+    - 'It''s so weird, because you were always so cheerful, so happy-go-lucky, take
+      it on the shoulder and go on with your day. '
+    - 'I loved that about you too, I used to be much quicker to anger myself. '
+    - 'But even then, one little thing, one tiny thing every now and again would
+      come up, like a clean plate having a scab of food on it, or your comb being
+      put in the wrong spot, by me, for the 3rd time, and whatever it was would pop
+      the bubble so to speak. '
+    - 'As it happened, as you processed it, your brow would contort into a deep furrow
+      and your cheeks would get all pinkish, you''d give off a cute, angry little
+      grimace, and there you''d go, zooming off spouting whatever words popped into
+      your head. '
+    - 'It was as if you were a little wind-up toy. I-I think I found it a little
+      TOO funny, because, and I''m sorry for this, but I''m not gonna lie, I DID
+      goad you into anger a couple times. '
+    - But I'm sure you knew that. And I loved how you'd forgive me even after I put
+      you through all my crap. It meant the world to me, Cath.
+    audioClips:
+    - {fileID: 8300000, guid: c379a045ed5aef748a57f70dba415a58, type: 3}
+    - {fileID: 8300000, guid: e5923c4ed2276fe4fb06f021689b95c2, type: 3}
+    - {fileID: 8300000, guid: e8a7be476d64198429036bd50dddd37a, type: 3}
+    - {fileID: 8300000, guid: b56d6c9bc21a09540a8795dd5dd450ab, type: 3}
+    - {fileID: 8300000, guid: 225cf6678317939429368bf895946571, type: 3}
+    - {fileID: 8300000, guid: 5d758bbd3e473a54483b0e85e13279eb, type: 3}
+    - {fileID: 8300000, guid: 9559e524f12f17a47abaa6dd738d9490, type: 3}

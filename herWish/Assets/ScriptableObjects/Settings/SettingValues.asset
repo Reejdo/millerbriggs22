@@ -32,6 +32,10 @@ MonoBehaviour:
     volume: 0.2
   - name: s_buttonClickUI
     volume: 0.25
+  - name: s_logUIOpen
+    volume: 0.25
+  - name: s_logUIClose
+    volume: 0.25
   visualEffects: 1
   fullScreen: 1
   dialogueOn: 1

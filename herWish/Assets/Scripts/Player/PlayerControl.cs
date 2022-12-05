@@ -34,6 +34,7 @@ public class PlayerControl : MonoBehaviour
 
     [Header("[Other]")]
     public SpriteRenderer playerSpriteRender;
+    public PlayerVisualEffects myPlayerEffects; 
 
     private int facePlantDirection;
     [SerializeField] private float longFallTime = 1.5f;
@@ -50,6 +51,7 @@ public class PlayerControl : MonoBehaviour
 
         myRigidBody2D = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>(); 
+        myPlayerEffects = GetComponent<PlayerVisualEffects>();
 
         facingDirection = 1;
     }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_m_2
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - "When we get up there, Cath, I hope you\u2019ll see how this changed me for
+      the better."
+    - 'I hope you can see the strength it has taken me to move towards our goal,
+      and know that you were the one to give me the push. '
+    - Your support, your love, your passions were stronger than this mountain could
+      ever hope to be.
+    audioClips:
+    - {fileID: 8300000, guid: 2bf159f2ffd6f2547a2c370f76fe3dd5, type: 3}
+    - {fileID: 8300000, guid: 43341a29271171840ab7b2156bb809f4, type: 3}
+    - {fileID: 8300000, guid: 73350b7a717411a4a83d72723e853c1f, type: 3}

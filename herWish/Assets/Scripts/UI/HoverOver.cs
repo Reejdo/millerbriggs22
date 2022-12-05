@@ -8,16 +8,28 @@ using UnityEngine.UI;
 public class HoverOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Animator hoverAnim;
-    public bool hoverOn; 
+    public bool hoverOn;
+    private AudioManager myAudioManager;
+    public Sounds logUIOpen;  
+
+    private void Start()
+    {
+        myAudioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         hoverOn = true; 
+
+        if (myAudioManager!= null)
+        {
+            myAudioManager.Play(logUIOpen, true); 
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        hoverOn = false; 
+        hoverOn = false;
     }
 
 

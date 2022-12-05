@@ -57,7 +57,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void ChangeVisualToggle()
     {
-        myAudioManager.Play(Sounds.s_buttonClickUI, true);
+        PlayToggleSound();
 
         bool toggle;
         toggle = visualToggle.isOn;
@@ -66,13 +66,12 @@ public class SettingsMenu : MonoBehaviour
 
         SetVisualEffects(toggle);
 
-        //Debug.Log("Save Game Data"); 
-        mySaveData.SaveGame(); 
+        SaveOnToggleChange(); 
     }
 
     public void ChangeFullScreenToggle() 
     {
-        myAudioManager.Play(Sounds.s_buttonClickUI, true);
+        PlayToggleSound(); 
 
         bool toggle;
         toggle = fullScreenToggle.isOn;
@@ -81,13 +80,12 @@ public class SettingsMenu : MonoBehaviour
 
         Screen.fullScreen = toggle;
 
-        //Debug.Log("Save Game Data");
-        mySaveData.SaveGame();
+        SaveOnToggleChange(); 
     }
 
     public void ChangeDialogueToggle()
     {
-        myAudioManager.Play(Sounds.s_buttonClickUI, true);
+        PlayToggleSound();
 
         bool toggle;
         toggle = dialogueToggle.isOn;
@@ -99,29 +97,46 @@ public class SettingsMenu : MonoBehaviour
             myDialogueManager.SetDialogueActiveState(toggle);
         }
 
-        //Debug.Log("Save Game Data");
-        mySaveData.SaveGame();
+        SaveOnToggleChange(); 
     }
 
     public void ChangeTimerToggle()
     {
         //Debug.Log("Change timer toggle"); 
 
-        if (dontPlaySoundTimer >= dontPlaySoundTime)
-        {
-            myAudioManager.Play(Sounds.s_buttonClickUI, true);
-        }
+        PlayToggleSound(); 
 
         bool toggle;
         toggle = timerToggle.isOn; 
 
         mySettingValues.timerOn = toggle;
 
-        //Debug.Log("Save Game Data");
-        mySaveData.SaveGame();
+        SaveOnToggleChange(); 
+
     }
 
-    
+    void PlayToggleSound()
+    {
+        if (dontPlaySoundTimer >= dontPlaySoundTime)
+        {
+            myAudioManager.Play(Sounds.s_buttonClickUI, true);
+        }
+    }
+
+
+    void SaveOnToggleChange()
+    {
+        //Use this as a save timer as well so no overlapping saving occurs
+        if (dontPlaySoundTimer >= dontPlaySoundTime)
+        {
+            if (!mySaveData.IsCurrentlySaving())
+            {
+                mySaveData.SaveGame();
+            }
+        }
+    }
+
+
     void SetVisualEffects(bool toggle)
     {
         foreach (GameObject obj in visualEffects)

@@ -8,7 +8,13 @@ public class Log : MonoBehaviour
     public LogInventory myLogInventory;
     public AudioManager myAudioManager;
     public Sounds logSound; 
-    private bool hasInteracted = false; 
+    private bool hasInteracted = false;
+
+    public GameObject particles;
+    public Collider2D myCollider;
+    public Animator myAnim;
+    private float animTime = 1.5f;
+
 
     private void Awake()
     {
@@ -21,6 +27,8 @@ public class Log : MonoBehaviour
     private void Start()
     {
         myAudioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>(); 
+        myCollider= gameObject.GetComponent<Collider2D>();
+        myAnim = gameObject.GetComponent<Animator>();
     }
 
 
@@ -41,10 +49,21 @@ public class Log : MonoBehaviour
             myLogInventory.CollectLog();
 
             //play collected sound 
-            myAudioManager.Play(logSound, true); 
+            myAudioManager.Play(logSound, true);
 
-            gameObject.SetActive(false); 
+            myCollider.enabled = false;
+
+            StartCoroutine(CollectLog()); 
         }
     }
 
+
+    IEnumerator CollectLog()
+    {
+        particles.SetActive(false);
+        myAnim.SetTrigger("trigger");
+
+        yield return new WaitForSeconds(animTime);
+        gameObject.SetActive(false);
+    }
 }

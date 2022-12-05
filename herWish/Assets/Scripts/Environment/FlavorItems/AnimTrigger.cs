@@ -28,6 +28,7 @@ public class AnimTrigger : MonoBehaviour
         {
             if (isEnterTrigger)
             {
+                Debug.Log("Entered animal close!"); 
                 trigger = true; 
             }
             else if (!isEnterTrigger)

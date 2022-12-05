@@ -18,19 +18,25 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     //LoadScene MUST be put in the same order as the enum are listed!!
     private UnityEvent[] LoadScene;
- 
+
+    [Header("First Time Save Check")]
+    public FirstTimeCheck myFirstCheck; 
+
+
     [Header("ScriptableObjects")]
     public AllDialogueObjects allDialogues;
     public LogInventory logInventory;
     public SettingValues settingValues; 
     public SaveScriptableData mySaveData;
+    public CompleteGameSettings myCompleteSettings; 
 
     [SerializeField]
     private int targetFrames = 60; 
 
     //Number for cutScene_1 in DataManager's load scene list
-    private int cutScene_1_Number = 4; 
+    private int cutScene_1_Number = 4;
 
+    private bool hasCheckedFirstOpen = false; 
     private bool gameComplete; 
 
     void Awake()
@@ -52,6 +58,27 @@ public class DataManager : MonoBehaviour
         //Set targeted frame rate
         Application.targetFrameRate = targetFrames; 
 
+
+        //if it is first time opening, set everything to default
+        if (myFirstCheck.FirstTime())
+        {
+            Debug.Log("Start New Game");
+            lastLevelLoaded = "Scene_1";
+            SetPlayerPosition(startX, startY);
+            SetGameComplete(false);
+
+            myCompleteSettings.ResetToDefault();
+            logInventory.ResetToDefault();
+            allDialogues.ResetAllDialogues();
+            settingValues.ResetTimer();
+            mySaveData.SaveGame();
+            hasCheckedFirstOpen = true; 
+        }
+        else
+        {
+            //Debug.Log("Has opened"); 
+            hasCheckedFirstOpen = true; 
+        }
     }
 
     public void ContinueGame()
@@ -118,7 +145,6 @@ public class DataManager : MonoBehaviour
         mySaveData.SaveGame();
     }
 
-
     public void SetNextLevelValues()
     {
         //Debug.Log("Set Next Level Values");
@@ -173,5 +199,10 @@ public class DataManager : MonoBehaviour
         {
             return true;
         }
+    }
+
+    public bool HasCheckedOpen()
+    {
+        return hasCheckedFirstOpen; 
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ec0cd6ae92df94cb3f12eff2792910, type: 3}
   m_Name: tempFinValues
   m_EditorClassIdentifier: 
-  hasFinishedGameOnce: 0
+  hasFinishedGameOnce: 1
   timesCompleted: 0
   allTimerValues:
   - 0

@@ -261,6 +261,7 @@ public enum Sounds
     s_pJump,
     s_pJumpLand, 
     s_completeLogs, 
-    s_buttonClickUI
-    
+    s_buttonClickUI,
+    s_logUIOpen,
+    s_logUIClose
 }

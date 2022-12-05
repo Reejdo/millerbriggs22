@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_AirTime: 0
   p_LastAirTime: 0
-  t_hitGround: 0.5
+  t_hitGround: 0.25
   t_ExtremeFall: 1.75
   t_FarthestFall: 2.5
   hitGround: 6

@@ -20,7 +20,6 @@ public class mPlatformParent : MonoBehaviour
     public TeleportOnLoad teleportLoad;
 
     private bool justParented = false;
-    private float movePlayerUp = 0.1f; 
 
     // Start is called before the first frame update
 
@@ -61,7 +60,10 @@ public class mPlatformParent : MonoBehaviour
 
     private void Update()
     {
-        xDist = Mathf.Abs(playerObject.transform.position.x) - Mathf.Abs(parentObject.transform.position.x);
+        float xOriginalDist = Mathf.Abs(playerObject.transform.position.x) - Mathf.Abs(parentObject.transform.position.x);
+
+
+        xDist = Mathf.Abs(xOriginalDist); 
         yDist = playerObject.transform.position.y - parentObject.transform.position.y;
 
         //only check if player is parented to this object's parent object

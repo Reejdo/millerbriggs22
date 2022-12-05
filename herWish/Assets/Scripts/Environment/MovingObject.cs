@@ -45,43 +45,45 @@ public class MovingObject : MonoBehaviour
 
         if (waitTimer > waitTime)
         {
+            UpdateWayPoint(); 
             Move();
         }
-
 
         myMovePlatform.platformPositions[movePlatformNumber] = platformObject.transform.position;
     }
 
 
-    void Move()
+    void UpdateWayPoint()
     {
         if (Vector2.Distance(platformObject.transform.position, wayPoint_1.position) < 0.1)
         {
-            waitMoveTimer += Time.deltaTime; 
+            waitMoveTimer += Time.deltaTime;
 
             if (waitMoveTimer > waitBetweenMoves)
             {
                 wayPointTarget = wayPoint_2;
                 //Debug.Log("Move to wayPoint_2");
 
-                waitMoveTimer = 0f; 
+                waitMoveTimer = 0f;
             }
         }
 
         if (Vector2.Distance(platformObject.transform.position, wayPoint_2.position) < 0.1)
         {
-                waitMoveTimer += Time.deltaTime;
+            waitMoveTimer += Time.deltaTime;
 
-                if (waitMoveTimer > waitBetweenMoves)
-                {
-                    wayPointTarget = wayPoint_1;
-                    //Debug.Log("Move to wayPoint_1");
+            if (waitMoveTimer > waitBetweenMoves)
+            {
+                wayPointTarget = wayPoint_1;
+                //Debug.Log("Move to wayPoint_1");
 
-                    waitMoveTimer = 0f;
-                }
+                waitMoveTimer = 0f;
+            }
         }
+    }
 
+    void Move()
+    {
         platformObject.transform.position = Vector2.MoveTowards(platformObject.transform.position, wayPointTarget.transform.position, Time.deltaTime * moveSpeed); 
-
     }
 }

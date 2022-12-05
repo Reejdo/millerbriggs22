@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voiceLine:
     name: unnamed_1
-    clip: {fileID: 8300000, guid: 8c51dddb7bb2c0c42a7cb017d748991a, type: 3}
+    clip: {fileID: 8300000, guid: 7a15e2ed579b68549b14e881c4e33570, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -151,6 +151,20 @@ MonoBehaviour:
   - name: s_buttonClickUI
     clip: {fileID: 8300000, guid: 170bbc360a755f546b99f1e51338cad2, type: 3}
     volume: 0.25
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: s_logUIOpen
+    clip: {fileID: 8300000, guid: c6a156aeda508c34f93dda82e581f05f, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: s_logUIClose
+    clip: {fileID: 8300000, guid: 59dc9ab602fd30448991898dfc5c2217, type: 3}
+    volume: 0.1
     pitch: 1
     loop: 0
     playOnAwake: 0

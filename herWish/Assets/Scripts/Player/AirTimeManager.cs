@@ -7,8 +7,6 @@ public class AirTimeManager : MonoBehaviour
     private PlayerControl myPlayerControl;
     private AudioManager myAudioManager; 
 
-    private bool wasJustGrounded = true; 
-
     [Header("Time Variables")]
     [SerializeField] private float p_AirTime;
     [SerializeField] private float p_LastAirTime; 
@@ -47,7 +45,8 @@ public class AirTimeManager : MonoBehaviour
             if (p_AirTime > 0)
             {
                 CheckGroundedInteractions();
-                p_AirTime = 0; 
+                p_AirTime = 0;
+                myPlayerControl.myPlayerEffects.SetJumpParticleState(false);
             }
             p_AirTime = 0;
         } 
@@ -65,6 +64,7 @@ public class AirTimeManager : MonoBehaviour
         //execute anything below extreme fall
         if (p_LastAirTime < t_ExtremeFall)
         {
+            myPlayerControl.myPlayerEffects.PlayGroundParticles();
             myAudioManager.Play(hitGround, true);
             return; 
         }

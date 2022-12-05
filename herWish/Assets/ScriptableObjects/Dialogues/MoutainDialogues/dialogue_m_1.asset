@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_m_1
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - I see now why you pushed me to do this, Cathlene.
+    - "I\u2019ve always been so easy to give up. So easy to live comfortably. Had
+      you not pushed me in this direction, I fear that I would have done exactly
+      that my entire life. "
+    - "I was on board when we started, but I\u2019m sure you saw me wavering over
+      the years. Had this not been your dream, I would have never strived to complete
+      this journey."
+    - "It\u2019s never been about the mountain. I\u2019m so sorry I never saw that."
+    audioClips:
+    - {fileID: 8300000, guid: 4a9586a539e7433478824f0bc9f6ce4e, type: 3}
+    - {fileID: 8300000, guid: 1ef0b4bf20200364693e10d693b398fd, type: 3}
+    - {fileID: 8300000, guid: 3e8844875bffc934fa64aac84557e263, type: 3}
+    - {fileID: 8300000, guid: 039b11026dd4ae549a2de8318da65bd7, type: 3}

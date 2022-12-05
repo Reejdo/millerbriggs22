@@ -183,7 +183,7 @@ MonoBehaviour:
   parentPlayer: 1
   playerObject: {fileID: 0}
   parentObject: {fileID: 7192968894829594822}
-  maxXDistance: 1.5
+  maxXDistance: 0.97
   maxYDistance: 1
   xDist: 0
   yDist: 0

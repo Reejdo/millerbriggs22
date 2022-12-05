@@ -13,90 +13,161 @@ public class SaveScriptableData : MonoBehaviour
     public MovePlatforms movePlatform, tempMovePlatform;
     public AllDialogueObjects allDialogues, tempDialogues;
     public SettingValues settingValues, tempSettings;
-    public CompleteGameSettings finishedValues, tempFinValues; 
+    public CompleteGameSettings finishedValues, tempFinValues;
+
+    private bool currentlySaving;
+    private bool currentlyLoading; 
 
     public bool IsSaveFile()
     {
         return Directory.Exists(Application.persistentDataPath + "/data_Save"); 
     }
 
+
     public void SaveGame()
     {
-        //Debug.Log("Save Scriptable Data");
-
-        if (!IsSaveFile())
+        if (!currentlySaving && !currentlyLoading)
         {
-            Debug.Log("No scriptable saves found -- creating location");
-            Directory.CreateDirectory(Application.persistentDataPath + "/data_Save"); 
+            Debug.Log("Saving!"); 
+
+            //Only one save at a time
+            currentlySaving = true; 
+
+            if (!IsSaveFile())
+            {
+                Debug.Log("No scriptable saves found -- creating location");
+                Directory.CreateDirectory(Application.persistentDataPath + "/data_Save");
+            }
+
+            BinaryFormatter bf = new BinaryFormatter();
+
+            //Log Data
+            try
+            {
+                FileStream file_1 = File.Create(Application.persistentDataPath + "/data_Save/lgIv_Data");
+                var json_1 = JsonUtility.ToJson(logInventory);
+                bf.Serialize(file_1, json_1);
+                file_1.Close();
+            }
+            catch
+            {
+                Debug.Log("Error saving lgIV"); 
+            }
+
+            //Move Platform Data
+            try
+            {
+                FileStream file_2 = File.Create(Application.persistentDataPath + "/data_Save/mvPl_Data");
+                var json_2 = JsonUtility.ToJson(movePlatform);
+                bf.Serialize(file_2, json_2);
+                file_2.Close();
+            }
+            catch
+            {
+                Debug.Log("Error saving mvPl"); 
+            }
+
+            //All Dialogue Data
+            try
+            {
+                FileStream file_3 = File.Create(Application.persistentDataPath + "/data_Save/aD_Data");
+                var json_3 = JsonUtility.ToJson(allDialogues);
+                bf.Serialize(file_3, json_3);
+                file_3.Close();
+            }
+            catch
+            {
+                Debug.Log("Error saving aD"); 
+            }
+
+            //Settings Data
+            try
+            {
+                FileStream file_4 = File.Create(Application.persistentDataPath + "/data_Save/settings");
+                var json_4 = JsonUtility.ToJson(settingValues);
+                bf.Serialize(file_4, json_4);
+                file_4.Close();
+            }
+            catch
+            {
+                Debug.Log("Error saving settings"); 
+            }
+            
+            //F-Settings Data
+            try
+            {
+                FileStream file_5 = File.Create(Application.persistentDataPath + "/data_Save/f_settings");
+                var json_5 = JsonUtility.ToJson(finishedValues);
+                bf.Serialize(file_5, json_5);
+                file_5.Close();
+            }
+            catch
+            {
+                Debug.Log("Error saving f_settings"); 
+            }
+
+            currentlySaving = false; 
         }
-
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file_1 = File.Create(Application.persistentDataPath + "/data_Save/lgIv_Data");
-        FileStream file_2 = File.Create(Application.persistentDataPath + "/data_Save/mvPl_Data");
-        FileStream file_3 = File.Create(Application.persistentDataPath + "/data_Save/aD_Data");
-        FileStream file_4 = File.Create(Application.persistentDataPath + "/data_Save/settings");
-        FileStream file_5 = File.Create(Application.persistentDataPath + "/data_Save/f_settings");
-        var json_1 = JsonUtility.ToJson(logInventory);
-        var json_2 = JsonUtility.ToJson(movePlatform);
-        var json_3 = JsonUtility.ToJson(allDialogues);
-        var json_4 = JsonUtility.ToJson(settingValues);
-        var json_5 = JsonUtility.ToJson(finishedValues);
-
-        bf.Serialize(file_1, json_1);
-        bf.Serialize(file_2, json_2);
-        bf.Serialize(file_3, json_3);
-        bf.Serialize(file_4, json_4);
-        bf.Serialize(file_5, json_5);
-
-        file_1.Close();
-        file_2.Close();
-        file_3.Close();
-        file_4.Close(); 
-        file_5.Close();
     }
 
     public void LoadGame()
     {
-        //All files should be created, so only need to check if 1 doesn't exist
-        if (!Directory.Exists(Application.persistentDataPath + "/data_Save"))
+        if (!currentlyLoading && !currentlySaving)
         {
-            //Debug.Log("Call Save Game"); 
-            SaveGame();  
-        }
+            currentlyLoading = true;
 
-        //Makes sure each file exists
-        CheckFilesExist(); 
+            Debug.Log("Loading"); 
 
-        //Make sure each file has the same number of data types
-        CompareBeforeLoad();
+            //All files should be created, so only need to check if 1 doesn't exist
+            if (!Directory.Exists(Application.persistentDataPath + "/data_Save"))
+            {
+                LoadCallSave(); 
+            }
 
-        //Debug.Log("Load Scriptable Data");
+            //Makes sure each file exists
+            CheckFilesExist();
 
+            //Make sure each file has the same number of data types
+            CompareBeforeLoad();
 
-        BinaryFormatter bf = new BinaryFormatter();
-        if (File.Exists(Application.persistentDataPath + "/data_Save/lgIv_Data"))
-        {
-            FileStream file_1 = File.Open(Application.persistentDataPath + "/data_Save/lgIv_Data", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_1), logInventory);
-            file_1.Close(); 
-        }
-        if (File.Exists(Application.persistentDataPath + "/data_Save/mvPl_Data"))
-        {
-            FileStream file_2 = File.Open(Application.persistentDataPath + "/data_Save/mvPl_Data", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_2), movePlatform);
-            file_2.Close();
-        }
-        if (File.Exists(Application.persistentDataPath + "/data_Save/aD_Data"))
-        {
-            FileStream file_3 = File.Open(Application.persistentDataPath + "/data_Save/aD_Data", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_3), allDialogues);
-            file_3.Close();
-        }
-        if (File.Exists(Application.persistentDataPath + "/data_Save/settings"))
-        {
-            FileStream file_4 = File.Open(Application.persistentDataPath + "/data_Save/settings", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_4), settingValues);
-            file_4.Close();
+            //Debug.Log("Load Scriptable Data");
+
+            if (!currentlySaving)
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                if (File.Exists(Application.persistentDataPath + "/data_Save/lgIv_Data"))
+                {
+                    FileStream file_1 = File.Open(Application.persistentDataPath + "/data_Save/lgIv_Data", FileMode.Open);
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_1), logInventory);
+                    file_1.Close();
+                }
+                if (File.Exists(Application.persistentDataPath + "/data_Save/mvPl_Data"))
+                {
+                    FileStream file_2 = File.Open(Application.persistentDataPath + "/data_Save/mvPl_Data", FileMode.Open);
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_2), movePlatform);
+                    file_2.Close();
+                }
+                if (File.Exists(Application.persistentDataPath + "/data_Save/aD_Data"))
+                {
+                    FileStream file_3 = File.Open(Application.persistentDataPath + "/data_Save/aD_Data", FileMode.Open);
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_3), allDialogues);
+                    file_3.Close();
+                }
+                if (File.Exists(Application.persistentDataPath + "/data_Save/settings"))
+                {
+                    FileStream file_4 = File.Open(Application.persistentDataPath + "/data_Save/settings", FileMode.Open);
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_4), settingValues);
+                    file_4.Close();
+                }
+                if (File.Exists(Application.persistentDataPath + "/data_Save/f_settings"))
+                {
+                    FileStream file_5 = File.Open(Application.persistentDataPath + "/data_Save/f_settings", FileMode.Open);
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_5), finishedValues);
+                    file_5.Close();
+                }
+            }
+
+            currentlyLoading = false;
         }
     }
 
@@ -135,8 +206,8 @@ public class SaveScriptableData : MonoBehaviour
         if (!File.Exists(Application.persistentDataPath + "/data_Save/f_settings"))
         {
             FileStream file_5 = File.Create(Application.persistentDataPath + "/data_Save/f_settings");
-            var json_4 = JsonUtility.ToJson(settingValues);
-            bf.Serialize(file_5, json_4);
+            var json_5 = JsonUtility.ToJson(finishedValues);
+            bf.Serialize(file_5, json_5);
             file_5.Close();
         }
     }
@@ -148,116 +219,193 @@ public class SaveScriptableData : MonoBehaviour
 
         BinaryFormatter bf = new BinaryFormatter();
 
-        if (File.Exists(Application.persistentDataPath + "/data_Save/mvPl_Data"))
+        if (!flagForSave)
         {
-            FileStream file_2 = File.Open(Application.persistentDataPath + "/data_Save/mvPl_Data", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_2), tempMovePlatform);
-            file_2.Close();
-
-            if (tempMovePlatform.platformPositions.Length != movePlatform.platformPositions.Length)
+            if (File.Exists(Application.persistentDataPath + "/data_Save/lgIv_Data"))
             {
-                Debug.Log("Platform number is different!"); 
+                FileStream file_1 = File.Open(Application.persistentDataPath + "/data_Save/lgIv_Data", FileMode.Open);
 
-                //make sure to update the ones that do exist
-                for (int i = 0; i < tempMovePlatform.platformPositions.Length; i++)
+                try
                 {
-                    movePlatform.platformPositions[i] = tempMovePlatform.platformPositions[i];
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_1), logInventory);
+
+                }
+                catch
+                {
+                    Debug.Log("Files are different - saving instead");
+                    flagForSave = true;
                 }
 
+                file_1.Close();
+            }
+            else
+            {
                 flagForSave = true;
             }
 
-            if (tempMovePlatform.playerParented.Length != movePlatform.playerParented.Length)
+            if (File.Exists(Application.persistentDataPath + "/data_Save/mvPl_Data"))
             {
-                //make sure to update the ones that do exist
-                for (int i = 0; i < tempMovePlatform.playerParented.Length; i++) 
+                FileStream file_2 = File.Open(Application.persistentDataPath + "/data_Save/mvPl_Data", FileMode.Open);
+
+                try
                 {
-                    movePlatform.playerParented[i] = tempMovePlatform.playerParented[i];
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_2), tempMovePlatform);
+                }
+                catch
+                {
+                    Debug.Log("Files are different - saving instead");
+                    flagForSave = true;
                 }
 
+                file_2.Close();
+
+                if (!flagForSave)
+                {
+                    if (tempMovePlatform.platformPositions.Length != movePlatform.platformPositions.Length)
+                    {
+                        Debug.Log("Platform number is different!");
+
+                        //make sure to update the ones that do exist
+                        for (int i = 0; i < tempMovePlatform.platformPositions.Length; i++)
+                        {
+                            movePlatform.platformPositions[i] = tempMovePlatform.platformPositions[i];
+                        }
+
+                        flagForSave = true;
+                    }
+
+                    if (tempMovePlatform.playerParented.Length != movePlatform.playerParented.Length)
+                    {
+                        //make sure to update the ones that do exist
+                        for (int i = 0; i < tempMovePlatform.playerParented.Length; i++)
+                        {
+                            movePlatform.playerParented[i] = tempMovePlatform.playerParented[i];
+                        }
+
+                        flagForSave = true;
+                    }
+                }
+            }
+            else
+            {
                 flagForSave = true;
             }
 
-        }
-        else
-        {
-            flagForSave = true; 
-        }
-
-        if (File.Exists(Application.persistentDataPath + "/data_Save/aD_Data"))
-        {
-            FileStream file_3 = File.Open(Application.persistentDataPath + "/data_Save/aD_Data", FileMode.Open);
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_3), tempDialogues);
-            file_3.Close();
-
-            if (tempDialogues.hasActivated.Length != allDialogues.hasActivated.Length)
+            if (File.Exists(Application.persistentDataPath + "/data_Save/aD_Data"))
             {
-                Debug.Log("Dialogue length is different!"); 
+                FileStream file_3 = File.Open(Application.persistentDataPath + "/data_Save/aD_Data", FileMode.Open);
 
+                try
+                {
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_3), tempDialogues);
+                }
+                catch
+                {
+                    Debug.Log("Files are different - saving instead");
+                    flagForSave = true;
+                }
+
+                file_3.Close();
+
+                if (!flagForSave)
+                {
+                    if (tempDialogues.hasActivated.Length != allDialogues.hasActivated.Length)
+                    {
+                        Debug.Log("Dialogue length is different!");
+
+                        flagForSave = true;
+                    }
+                }
+
+            }
+            else
+            {
                 flagForSave = true;
             }
 
-        }
-        else
-        {
-            flagForSave = true;
-        }
-
-        if (File.Exists(Application.persistentDataPath + "/data_Save/settings"))
-        {
-            FileStream file_4 = File.Open(Application.persistentDataPath + "/data_Save/settings", FileMode.Open);
-
-            try
+            if (File.Exists(Application.persistentDataPath + "/data_Save/settings"))
             {
-                JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_4), tempSettings);
+                FileStream file_4 = File.Open(Application.persistentDataPath + "/data_Save/settings", FileMode.Open);
+
+                try
+                {
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_4), tempSettings);
+                }
+                catch
+                {
+                    Debug.Log("Files are different - saving instead");
+                    flagForSave = true;
+                }
+
+                file_4.Close();
+
+
+                if (tempSettings.soundVolumes.Length != settingValues.soundVolumes.Length)
+                {
+                    Debug.Log("Number of sound volumes is different!");
+
+                    flagForSave = true;
+
+                }
+
+                if (tempSettings.GetTimerValue() == 0)
+                {
+                    Debug.Log("No timer!");
+                    flagForSave = true;
+                }
+
             }
-            catch
+            else
             {
-                Debug.Log("Files are different - saving instead"); 
                 flagForSave = true;
             }
 
-            file_4.Close();
-
-
-            if (tempSettings.soundVolumes.Length != settingValues.soundVolumes.Length) 
+            if (File.Exists(Application.persistentDataPath + "/data_Save/f_settings"))
             {
-                Debug.Log("Number of sound volumes is different!"); 
+                FileStream file_5 = File.Open(Application.persistentDataPath + "/data_Save/f_settings", FileMode.Open);
 
-                flagForSave= true;
-            
+                try
+                {
+                    JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_5), tempFinValues);
+                }
+                catch
+                {
+                    Debug.Log("Files are different - saving instead");
+                    flagForSave = true;
+                }
             }
-
-            if (tempSettings.GetTimerValue() == 0)
+            else
             {
-                Debug.Log("No timer!"); 
-                flagForSave = true;
-            }
-
-        }
-
-        if (File.Exists(Application.persistentDataPath + "/data_Save/f_settings"))
-        {
-            FileStream file_5 = File.Open(Application.persistentDataPath + "/data_Save/f_settings", FileMode.Open);
-
-            try
-            {
-                JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_5), tempFinValues);
-            }
-            catch
-            {
-                Debug.Log("Files are different - saving instead");
-                flagForSave = true;
+                flagForSave = true; 
             }
         }
+
 
         //Save the game first before loading so that 
         if (flagForSave) 
         {
-            Debug.Log("Flagged to Save"); 
-            SaveGame(); 
+            Debug.Log("Flagged to Save");
+            LoadCallSave(); 
         }
 
     }
 
+    void LoadCallSave()
+    {
+        if (!currentlySaving)
+        {
+            currentlyLoading = false;
+            SaveGame();
+        }
+        else
+        {
+            Debug.Log("Already saving!"); 
+        }
+    }
+
+
+    public bool IsCurrentlySaving()
+    {
+        return currentlySaving; 
+    }
 }

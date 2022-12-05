@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a66b4c9771bed4481cb9bf16f806fb, type: 3}
   m_Name: tempAllDialogues]
   m_EditorClassIdentifier: 
-  hasActivated: 00000000
+  hasActivated: 00000000000000000000

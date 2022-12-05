@@ -9,7 +9,9 @@ public class DataFileWrite : MonoBehaviour
     public List<string> levelName, playerPosX, playerPosY;   
     public string path;
     private string[] allLines;
-    private DataManager myDataManager; 
+    private DataManager myDataManager;
+
+    private bool hasLoaded;
 
     private void Awake()
     {
@@ -23,9 +25,19 @@ public class DataFileWrite : MonoBehaviour
         {
             Debug.Log("Data Manager cannot be found!"); 
         }
+    }
 
-        myDataManager.mySaveData.LoadGame(); 
+    public void Start()
+    {
 
+    }
+
+    private void Update()
+    {
+        if (hasLoaded == false)
+        {
+            LoadGameOnOpenCheck(); 
+        }
     }
 
 
@@ -100,4 +112,17 @@ public class DataFileWrite : MonoBehaviour
         File.WriteAllLines(path, allLines);
     }
 
+
+    void LoadGameOnOpenCheck()
+    {
+        if (myDataManager.HasCheckedOpen())
+        {
+            hasLoaded = true; 
+            myDataManager.mySaveData.LoadGame();
+        }
+        else
+        {
+            Debug.Log("Has not checked first open!");
+        }
+    }
 }

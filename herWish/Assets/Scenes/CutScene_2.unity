@@ -14786,7 +14786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTheme: {fileID: 1470642477}
   myAudioManager: {fileID: 0}
-  timeToWait: 1
+  timeToWait: 1.1
 --- !u!1 &2024442708
 GameObject:
   m_ObjectHideFlags: 0

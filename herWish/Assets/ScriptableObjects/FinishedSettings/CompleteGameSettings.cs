@@ -71,4 +71,16 @@ public class CompleteGameSettings : ScriptableObject
         return allTimerValues.Length;
     }
 
+    public void ResetToDefault()
+    {
+        SetFinishedGameState(false);
+
+        timesCompleted = 0; 
+
+        for (int i = 0; i < allTimerValues.Length; i++)
+        {
+            allTimerValues[i] = 0;
+        }
+    }
+
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9143554244465492509}
   - component: {fileID: 5484825031580646246}
   - component: {fileID: 7411014427640431611}
+  - component: {fileID: 1555503096}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -138,10 +139,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  myFirstCheck: {fileID: 1555503096}
   allDialogues: {fileID: 11400000, guid: dac65de4f9250594ba8abbecd4ae43a0, type: 2}
   logInventory: {fileID: 11400000, guid: e6c67f2a7777cd24da6e5e23950c6fdb, type: 2}
   settingValues: {fileID: 11400000, guid: 7c1de0e7f1a2dbb4e932f943d5146b4c, type: 2}
   mySaveData: {fileID: 7411014427640431611}
+  myCompleteSettings: {fileID: 11400000, guid: 7d87adb163d07504f8bc441e959eb87e, type: 2}
+  targetFrames: 60
 --- !u!114 &9143554244465492509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,3 +196,15 @@ MonoBehaviour:
   tempSettings: {fileID: 11400000, guid: 80154b509497fe4488438e33072fe7cc, type: 2}
   finishedValues: {fileID: 11400000, guid: 7d87adb163d07504f8bc441e959eb87e, type: 2}
   tempFinValues: {fileID: 11400000, guid: 3dd33b3c8910bda40abc8353af138117, type: 2}
+--- !u!114 &1555503096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143554244465492512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe55f0e03b195ba4babfb0f5b6bdfea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

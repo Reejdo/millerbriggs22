@@ -20,6 +20,18 @@ TextureImporter:
   - first:
       213: 5184439264573211826
     second: flavorObjects_1_5
+  - first:
+      213: -511318312566715523
+    second: flavorObjects_1_6
+  - first:
+      213: -5581139032917280572
+    second: flavorObjects_1_7
+  - first:
+      213: -9062226976209085329
+    second: flavorObjects_1_8
+  - first:
+      213: 4011068118402981938
+    second: flavorObjects_1_9
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -243,6 +255,90 @@ TextureImporter:
       bones: []
       spriteID: 2b44974fa04d2f740800000000000000
       internalID: 5184439264573211826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flavorObjects_1_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7b0f4c24be67e8f0800000000000000
+      internalID: -511318312566715523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flavorObjects_1_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8f5e4ae9fcb82b0800000000000000
+      internalID: -5581139032917280572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flavorObjects_1_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c581134908c3280800000000000000
+      internalID: -9062226976209085329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flavorObjects_1_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230ed4fb33d2aa730800000000000000
+      internalID: 4011068118402981938
       vertices: []
       indices: 
       edges: []

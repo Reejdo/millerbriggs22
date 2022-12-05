@@ -51,7 +51,7 @@ public class VisualCueFade : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "FlavorTrigger")
         {
             //StartCoroutine(FadeImage(false));
             fadeIn = true; 
@@ -60,7 +60,7 @@ public class VisualCueFade : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "FlavorTrigger")
         {
             //StartCoroutine(FadeImage(true));
             fadeIn = false; 

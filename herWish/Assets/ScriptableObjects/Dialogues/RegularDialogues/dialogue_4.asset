@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215dd6521901eb4eb1daf91556c032c, type: 3}
+  m_Name: dialogue_4
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  onlyActivateOnce: 1
+  dialogue:
+    sentences:
+    - 'I remember when I told my mother I was moving away with you near Mt. Faurek.
+      Good lord, was that an event and a half. '
+    - "I mean, it\u2019s - it\u2019s crazy how fast that woman could talk when she
+      wanted to. I\u2019m talkin\u2019 road runnin\u2019, fast gunnin\u2019, blue-angels-jet-stunning
+      speed here. "
+    - 'I could barely keep track of the first five concerns she prattled off by the
+      time she was on number thirty. '
+    - "\u201CB-b-but Bill! Nobody\u2019s climbed it all the way before!\u201D \u201CBut
+      Bill! How am I going to come see you?\u201D"
+    - "\u201CWhat if you and Cathlene have kids?! I need to see my grandkids!\u201D
+      \u201CBut Bill! Who\u2019s going to watch the Spencers\u2019 pomeranians at
+      the church when they\u2019re away? I can\u2019t watch them, I\u2019m allergic
+      to annoying, Bill!\u201D I mean, the list went on and on."
+    - 'You would think at 35 that your own mother would trust you enough to move
+      a couple hours to a different state. '
+    - "But\u2026in some ways she was kind of right. And I was kind of scared myself.
+      The move, the time commitment, all of it. I didn\u2019t think I\u2019d be doing
+      this for the rest of my life\u2026For the rest of your life."
+    - "I just\u2026I wish I would\u2019ve worked harder from the start."
+    audioClips:
+    - {fileID: 8300000, guid: 921c2b0dba8f0104182c3aa33c2d468a, type: 3}
+    - {fileID: 8300000, guid: 2d8791d2918e0a5488d41853c5d02922, type: 3}
+    - {fileID: 8300000, guid: 1cbf39ce95a8f0a4286c745741618a88, type: 3}
+    - {fileID: 8300000, guid: 10e0070acb2685b4395bb5622cec6c35, type: 3}
+    - {fileID: 8300000, guid: 51efc4862e3c8e04a8f4a2f42775caa0, type: 3}
+    - {fileID: 8300000, guid: 95c0258eb29cd9247af63cce762f6c61, type: 3}
+    - {fileID: 8300000, guid: 0cab40127a0b76240ace7ced9c6ac95b, type: 3}
+    - {fileID: 8300000, guid: 834ff795f764c7c4187d85193be49181, type: 3}
