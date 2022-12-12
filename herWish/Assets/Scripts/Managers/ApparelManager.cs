@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApparelManager : MonoBehaviour
 {
-    [SerializeField] private CompleteGameSettings myCompleteSettings;
+    [SerializeField] private SettingValues myCompleteSettings;
     [SerializeField] private GameObject[] hatObject;
 
     bool enabledHats; 
@@ -49,13 +49,9 @@ public class ApparelManager : MonoBehaviour
 
     void EnableHats()
     {
-        if (myCompleteSettings.GetTimesCompleted() > hatObject.Length)
+        if (myCompleteSettings.GetTimesCompleted() > 0)
         {
-            hatObject[hatObject.Length - 1].SetActive(true); 
-        }
-        else
-        {
-            hatObject[myCompleteSettings.GetTimesCompleted()].SetActive(true); 
+            hatObject[0].SetActive(true); 
         }
     }
 }

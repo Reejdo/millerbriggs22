@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -21,6 +22,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private bool isGrounded;
     public bool jumpColliderHit;
+
+    [Header("[Face Plant Wall Detection]")]
+    public float rayDist;
+    public Vector2 rayDownLeftOffset; 
+    private Vector2 offset; 
 
     [Header("[Booleans]")]
     public bool canMove = true;
@@ -103,7 +109,8 @@ public class PlayerControl : MonoBehaviour
 
                 if (Mathf.Abs(moveX) > 0.1)
                 {
-                    isMoving = true; 
+                    isMoving = true;
+                    isLaunching = false; 
                 }
                 else
                 {
@@ -245,6 +252,8 @@ public class PlayerControl : MonoBehaviour
 
     void CheckFacePlant()
     {
+        bool canFacePlant = CanFacePlant();
+
         if (!facePlant)
         {
             if (isGrounded)
@@ -259,7 +268,7 @@ public class PlayerControl : MonoBehaviour
                 facePlantDirection = facingDirection;
             }
         }
-        if (previousAirTime > longFallTime && OneGroundedTrue())
+        if (previousAirTime > longFallTime && OneGroundedTrue() && canFacePlant)
         {
             Debug.Log("FacePlant");
 
@@ -281,6 +290,37 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
+
+    bool CanFacePlant()
+    {
+        RaycastHit2D rayDownLeft;
+        Vector2 downDirection = new Vector2(0, -1 * rayDist);
+        bool rayHit;
+
+        offset = new Vector2(rayDownLeftOffset.x * facingDirection, rayDownLeftOffset.y); 
+
+        rayDownLeft = Physics2D.Raycast((Vector2)transform.position + rayDownLeftOffset, downDirection);
+
+        if (rayDownLeft.collider != null)
+        {
+            if (rayDownLeft.collider.gameObject.CompareTag("Ground"))
+            {
+                //Debug.Log("Ray Down Left Hit");
+                rayHit = true;
+            }
+            else
+            {
+                rayHit = false;
+            }
+        }
+        else
+        {
+            rayHit = false;
+        }
+
+        return rayHit; 
+    }
+
 
     //use this for bouncy platforms
     public void ResetAirTimer()
@@ -368,5 +408,17 @@ public class PlayerControl : MonoBehaviour
     {
         return facePlant; 
     }
-  
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        //Draw face plant rays
+        Vector2 downDirection = new Vector2(0, -1 * rayDist);
+
+        Gizmos.DrawRay((Vector2)transform.position + offset, downDirection);
+    }
+
+
 }

@@ -40,4 +40,12 @@ MonoBehaviour:
   fullScreen: 1
   dialogueOn: 1
   timerOn: 1
-  timerValue: 0
+  timerValue: 0.1
+  hasFinishedGameOnce: 1
+  timesCompleted: 0
+  allTimerValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0

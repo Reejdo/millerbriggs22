@@ -14,20 +14,36 @@ public class Timer : MonoBehaviour
     [SerializeField] private TMP_Text mainText, millisecondText; 
 
     bool timerRunning = true;
-    bool timerPermanentStop = false; 
+    bool timerPermanentStop = false;
+
+    private SaveScriptableData myScriptData;
+    private bool hasLoadedTime; 
 
     void Start()
     {
         timerUI.SetActive(false);
 
-        timerVal = mySettingValues.GetTimerValue(); 
+        myScriptData = GameObject.FindObjectOfType<SaveScriptableData>().GetComponent<SaveScriptableData>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (myScriptData != null)
+        {
+            if (myScriptData.hasLoadedOnce && !hasLoadedTime)
+            {
+                hasLoadedTime = true;
+                timerVal = mySettingValues.GetTimerValue();
+            }
+        }
+        else if (myScriptData == null)
+        {
+            myScriptData = GameObject.FindObjectOfType<SaveScriptableData>().GetComponent<SaveScriptableData>();
+        }
 
-        if (timerRunning && !timerPermanentStop)
+
+        if (timerRunning && !timerPermanentStop && hasLoadedTime)
         {
             UpdateTimerDisplay(); 
         }
@@ -74,5 +90,10 @@ public class Timer : MonoBehaviour
     public void SetTimePermanentStop(bool state)
     {
         timerPermanentStop = state; 
+    }
+
+    public float GetTime()
+    {
+        return timerVal; 
     }
 }

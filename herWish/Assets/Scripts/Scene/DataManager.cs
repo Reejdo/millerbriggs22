@@ -28,7 +28,6 @@ public class DataManager : MonoBehaviour
     public LogInventory logInventory;
     public SettingValues settingValues; 
     public SaveScriptableData mySaveData;
-    public CompleteGameSettings myCompleteSettings; 
 
     [SerializeField]
     private int targetFrames = 60; 
@@ -67,7 +66,7 @@ public class DataManager : MonoBehaviour
             SetPlayerPosition(startX, startY);
             SetGameComplete(false);
 
-            myCompleteSettings.ResetToDefault();
+            settingValues.ResetToDefault();
             logInventory.ResetToDefault();
             allDialogues.ResetAllDialogues();
             settingValues.ResetTimer();

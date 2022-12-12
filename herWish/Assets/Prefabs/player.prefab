@@ -5757,7 +5757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8061617578005477786}
   - component: {fileID: 8061617578005477785}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: playerCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6047,6 +6047,9 @@ MonoBehaviour:
     m_Bits: 64
   isGrounded: 0
   jumpColliderHit: 0
+  rayDist: 0.15
+  rayDownLeftOffset: {x: 0.05, y: -0.375}
+  offset: {x: 0, y: 0}
   canMove: 1
   edgeMove: 1
   canJump: 1

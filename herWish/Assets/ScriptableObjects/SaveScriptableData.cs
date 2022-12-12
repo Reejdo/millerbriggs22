@@ -13,16 +13,16 @@ public class SaveScriptableData : MonoBehaviour
     public MovePlatforms movePlatform, tempMovePlatform;
     public AllDialogueObjects allDialogues, tempDialogues;
     public SettingValues settingValues, tempSettings;
-    public CompleteGameSettings finishedValues, tempFinValues;
 
     private bool currentlySaving;
-    private bool currentlyLoading; 
+    private bool currentlyLoading;
+
+    public bool hasLoadedOnce; 
 
     public bool IsSaveFile()
     {
         return Directory.Exists(Application.persistentDataPath + "/data_Save"); 
     }
-
 
     public void SaveGame()
     {
@@ -92,11 +92,12 @@ public class SaveScriptableData : MonoBehaviour
             {
                 Debug.Log("Error saving settings"); 
             }
-            
+
             //F-Settings Data
+            /*
             try
             {
-                FileStream file_5 = File.Create(Application.persistentDataPath + "/data_Save/f_settings");
+                FileStream file_5 = File.Create(Application.persistentDataPath + FLOCATION + "/" + FFILENAME);
                 var json_5 = JsonUtility.ToJson(finishedValues);
                 bf.Serialize(file_5, json_5);
                 file_5.Close();
@@ -105,6 +106,9 @@ public class SaveScriptableData : MonoBehaviour
             {
                 Debug.Log("Error saving f_settings"); 
             }
+            */
+
+            hasLoadedOnce = true; 
 
             currentlySaving = false; 
         }
@@ -159,13 +163,17 @@ public class SaveScriptableData : MonoBehaviour
                     JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_4), settingValues);
                     file_4.Close();
                 }
-                if (File.Exists(Application.persistentDataPath + "/data_Save/f_settings"))
+                /*
+                if (File.Exists(Application.persistentDataPath + FLOCATION + "/" + FFILENAME))
                 {
-                    FileStream file_5 = File.Open(Application.persistentDataPath + "/data_Save/f_settings", FileMode.Open);
+                    FileStream file_5 = File.Open(Application.persistentDataPath + FLOCATION + "/" + FFILENAME, FileMode.Open);
                     JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file_5), finishedValues);
                     file_5.Close();
                 }
+                */ 
             }
+
+            hasLoadedOnce = true; 
 
             currentlyLoading = false;
         }
@@ -203,13 +211,15 @@ public class SaveScriptableData : MonoBehaviour
             bf.Serialize(file_4, json_4);
             file_4.Close();
         }
-        if (!File.Exists(Application.persistentDataPath + "/data_Save/f_settings"))
+        /*
+        if (!File.Exists(Application.persistentDataPath + FLOCATION + "/" + FFILENAME))
         {
-            FileStream file_5 = File.Create(Application.persistentDataPath + "/data_Save/f_settings");
+            FileStream file_5 = File.Create(Application.persistentDataPath + FLOCATION + "/" + FFILENAME);
             var json_5 = JsonUtility.ToJson(finishedValues);
             bf.Serialize(file_5, json_5);
             file_5.Close();
         }
+        */ 
     }
 
     void CompareBeforeLoad()
@@ -360,9 +370,10 @@ public class SaveScriptableData : MonoBehaviour
                 flagForSave = true;
             }
 
-            if (File.Exists(Application.persistentDataPath + "/data_Save/f_settings"))
+            /*
+            if (File.Exists(Application.persistentDataPath + FLOCATION + "/" + FFILENAME))
             {
-                FileStream file_5 = File.Open(Application.persistentDataPath + "/data_Save/f_settings", FileMode.Open);
+                FileStream file_5 = File.Open(Application.persistentDataPath + FLOCATION + "/" + FFILENAME, FileMode.Open);
 
                 try
                 {
@@ -378,6 +389,7 @@ public class SaveScriptableData : MonoBehaviour
             {
                 flagForSave = true; 
             }
+            */ 
         }
 
 

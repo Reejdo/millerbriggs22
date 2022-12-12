@@ -27,20 +27,8 @@ public class SideBouncePlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //player moving right towards object, bounce the player left
-            if (collision.gameObject.transform.position.x < gameObject.transform.position.x)
-            {
-                //Debug.Log("Bounce left"); 
-                myPlayerControl.PlayerSideBounce(-bounceForceX, bounceForceY);
-                myAnim.SetTrigger("bounce");
-            }
-            //bounce the player right
-            else
-            {
-                //Debug.Log("Bounce right"); 
-                myPlayerControl.PlayerSideBounce(bounceForceX, bounceForceY);
-                myAnim.SetTrigger("bounce");
-            }
+            myPlayerControl.PlayerSideBounce(bounceForceX, bounceForceY);
+            myAnim.SetTrigger("bounce");
 
         }
     }

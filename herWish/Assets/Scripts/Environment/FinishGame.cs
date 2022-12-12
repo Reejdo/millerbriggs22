@@ -19,6 +19,11 @@ public class FinishGame : MonoBehaviour
     private DataManager myDataManager;
     private DataFileWrite myDataFileWrite;
     private PlayerControl myPlayerControl;
+    [SerializeField]
+    private AchievementManager myAchievementManager;
+    [SerializeField]
+    private TimeAchievementSet myTimeAchievement;
+    public int completeStatIndex; 
     private Timer myTimer; 
 
     // Start is called before the first frame update
@@ -51,8 +56,12 @@ public class FinishGame : MonoBehaviour
 
     IEnumerator SceneLoading()
     {
+        myAchievementManager.IncrementStat(completeStatIndex); 
+
         myTimer.SetTimePermanentStop(true); 
         myPlayerControl.SetMoveState(false);
+
+        myTimeAchievement.CheckTimeAchievements(myTimer.GetTime());
 
         if (roomFader != null)
         {

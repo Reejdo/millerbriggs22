@@ -2,28 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.PlayerLoop;
 
 public class FinishedMenuManager : MonoBehaviour
 {
-    public CompleteGameSettings myFinishedSettings;
+    public SettingValues myFinishedSettings;
     public TMP_Text completeText; 
     public TMP_Text[] timerTexts;
 
-    public GameObject[] titleScreens; 
+    public GameObject[] titleScreens;
+
+    private SaveScriptableData myScriptData;
+    private bool hasLoaded; 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (myFinishedSettings.GetFinishedGameState())
-        {
-            titleScreens[1].SetActive(true);
-            titleScreens[0].SetActive(false);
-        }
 
-        SetTimeValues();
-        SetCompletedTimeValue();
 
     }
+
+    void Update()
+    {
+        if (myScriptData == null)
+        {
+            myScriptData = GameObject.FindObjectOfType<SaveScriptableData>().GetComponent<SaveScriptableData>();
+        }
+        else if (myScriptData != null)
+        {
+            if (myScriptData.hasLoadedOnce && !hasLoaded)
+            {
+                hasLoaded = true; 
+
+                if (myFinishedSettings.GetFinishedGameState())
+                {
+                    titleScreens[1].SetActive(true);
+                    titleScreens[0].SetActive(false);
+                }
+
+                SetTimeValues();
+                SetCompletedTimeValue();
+            }
+        }
+    }
+
 
     void SetTimeValues()
     {
@@ -54,12 +76,5 @@ public class FinishedMenuManager : MonoBehaviour
     void SetCompletedTimeValue()
     {
         completeText.text = "" + myFinishedSettings.GetTimesCompleted(); 
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

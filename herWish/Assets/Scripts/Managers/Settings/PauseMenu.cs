@@ -63,10 +63,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         ExternalUIState(true); 
 
-        if (myLogInventory.GetLogsCollected() >= myLogInventory.GetMaxLogs())
+        if (completeLogUI != null)
         {
-            completeLogUI.SetActive(true); 
+            if (myLogInventory.GetLogsCollected() >= myLogInventory.GetMaxLogs())
+            {
+                completeLogUI.SetActive(true);
+            }
         }
+
 
         //Resume time
         Time.timeScale = 1f;
@@ -79,7 +83,12 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         ExternalUIState(false);
-        completeLogUI.SetActive(false);
+
+        if (completeLogUI != null)
+        {
+            completeLogUI.SetActive(false);
+        }
+
         DisableExtraUIOnPause(); 
 
         myTimer.SetTimerState(false); 
